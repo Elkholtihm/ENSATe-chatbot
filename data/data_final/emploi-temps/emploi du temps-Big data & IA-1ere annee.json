@@ -1,0 +1,58 @@
+{
+    "Lundi": [
+        {
+            "time": "S105",
+            "location": "S105",
+            "module": "Algorithmique avancée et programmation",
+            "professor": "Belcaid"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "S105",
+            "location": "S105",
+            "module": "Visualisation des données",
+            "professor": "Sassi"
+        },
+        {
+            "time": "S103",
+            "location": "S103",
+            "module": "Langues étrangères 2",
+            "professor": "El Morabet"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "S105",
+            "location": "S105",
+            "module": "Fondamentaux du Big Data",
+            "professor": "Sassi"
+        },
+        {
+            "event": "Activités des étudiants"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "S105",
+            "location": "S105",
+            "module": "Apprentissage Automatique",
+            "professor": "Hachchane"
+        },
+        {
+            "time": "Amphi",
+            "location": "Amphi",
+            "module": "Culture & arts & sport skills",
+            "professor": "Hira"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "S105",
+            "location": "S105",
+            "module": "Algèbre linéaire numérique pour l'analyse de données",
+            "professor": "Louly"
+        }
+    ],
+    "Samedi": []
+}

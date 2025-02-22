@@ -1,0 +1,89 @@
+{
+    "Lundi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S103",
+            "module": "Mécanique des fluides",
+            "professor": "El Khannoussi"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S103",
+            "module": "Mécanique des fluides",
+            "professor": "El Khannoussi"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "CRL",
+            "module": "Langues étrangères 2",
+            "professor": "Nejjari/Malla Hussein"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S103",
+            "module": "Géologie de l'Ingénieur",
+            "professor": "Khamlichi"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S103",
+            "module": "Géologie de l'Ingénieur",
+            "professor": "Khamlichi"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S103",
+            "module": "Géotechnique 1",
+            "professor": "Bounab"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S103",
+            "module": "Géotechnique 1",
+            "professor": "Bounab"
+        },
+        {
+            "time": "14:30 - 18:00",
+            "event": "Activités des étudiants"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S103",
+            "module": "Résistance des matériaux 2",
+            "professor": "A.El Bakari"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S103",
+            "module": "Résistance des matériaux 2",
+            "professor": "A.El Bakari"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi",
+            "module": "Culture & arts & sport skills",
+            "professor": "Hira"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S103",
+            "module": "Topographie et urbanisme",
+            "professor": "Bannour/El Yamouni"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S103",
+            "module": "Topographie et urbanisme",
+            "professor": "Bannour/El Yamouni"
+        }
+    ],
+    "Samedi": []
+}

@@ -1,0 +1,56 @@
+cet document concerne formation-genie-informatique
+Cycle ingénieur :Génie Informatique
+Coordonnateur : Prof. EL YOUNOUSSI Yacine. Courriel :yacine.info@gmail.com
+Semestre 1
+Langues et Communication I
+Management I
+Probabilités, Statistiques et Calcul Stochastique
+Réseaux Informatiques I
+Systèmes d’Information et Bases de Données Relationnelles
+Théories des Graphes et Recherche Opérationnelle
+Semestre 2
+Électronique Numérique
+Programmation Web I
+Programmation C Avancé et Complexité
+Systèmes d’exploitation
+Théories des Langages et Compilation
+Architecture des Ordinateurs et Assembleur
+Semestre 3
+Modélisation et Programmation Objet
+Programmation Réseaux et Sécurité Informatique
+Réseaux informatique II
+Méthodologies et Génie Logiciel
+Langues et Communication II
+Management II
+Semestre 4
+Intelligence Artificielle
+Administration et Optimisation des BD
+Programmation web II
+Java Avancé
+Vision Artificielle
+Base de Données Relationnelle-Objet et Répartie
+Semestre 5, option 1: Systèmes d’Information et Applications Décisionnelles (SIAD)
+Système d’Intégration et Progiciel
+Business Intelligence
+Urbanisation des Systèmes d’Information
+Programmation des Systèmes
+Technologies DotNet et JEE
+Langues et Communication III
+Management III
+Semestre 5, option 2: Génie Logiciel (GL)
+Test de logiciels et sûreté de fonctionnement
+Urbanisation des Systèmes d’Information et Workflow
+Langages de modélisation et vérification formelle
+Technologies DotNet et JEE
+Système d’Exploitation Temps Réel Embarqué
+Langues et Communication III
+Management III
+Semestre 5, option 3: Ingénierie des Réseaux et Systèmes (IRS)
+Sécurité Réseaux
+Management et Administration Réseaux
+Qualité de Service et Optimisation des Réseaux
+Réseaux Sans-Fil et de Capteurs
+Technologies DotNet et JEE
+Langues et Communication III
+Management III
+Projet de Fin d’Etudes

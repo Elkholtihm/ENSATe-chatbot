@@ -1,0 +1,8 @@
+myenv/
+app.py
+raft_state.json
+collections/
+data.json
+.ipynb_checkpoints/
+recherche&report/
+aliases/

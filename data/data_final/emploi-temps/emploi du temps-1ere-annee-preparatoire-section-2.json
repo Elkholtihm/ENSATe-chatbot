@@ -1,0 +1,164 @@
+{
+    "Lundi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR5"
+        },
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR6"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR6"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Analyse",
+            "group": "GR5"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 1",
+            "module": "Algorithmique",
+            "group": "Section 2",
+            "professor": "A. Tahiri"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Analyse 2",
+            "group": "Section 2"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Algèbre 2",
+            "group": "Section 2"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR4"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Salle 1",
+            "module": "Chimie",
+            "group": "GR4"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Salle 1",
+            "module": "Analyse",
+            "group": "GR6"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR6"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR4"
+        },
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR5"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Analyse",
+            "group": "GR4"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR5"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 1",
+            "module": "Culture digitale",
+            "group": "Section 2"
+        },
+        {
+            "event": "Activités des étudiants",
+            "time": "14:00 - 18:00"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR4"
+        },
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR5"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Chimie générale",
+            "group": "Section 2",
+            "professor": "Bounab"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR4"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR5"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR6"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 1",
+            "module": "Algèbre",
+            "group": "GR6"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Thermodynamique et Statique des Fluides",
+            "group": "Section 2",
+            "professor": "Al Mers"
+        }
+    ],
+    "Samedi": []
+}

@@ -1,0 +1,50 @@
+cet document concerne formation genie en cybersecurite et systemes embarques
+Diplôme: Ingénieur d’état, Filière Ingénieur:Génie en Cybersécurité et Systèmes Embarqués
+Objectif de la filière
+L’objectif principal de la filière Génie en Cybersécurité et Systèmes Embarqués est de former l’élève ingénieur à la conception, au développement et à la sécurisation de systèmes embarqués et d’infrastructures informatiques. La formation met un accent particulier sur la maîtrise des techniques avancées de cybersécurité pour identifier, prévenir et contrer les menaces potentielles, tout en garantissant la protection des systèmes critiques. L’élève ingénieur acquiert ainsi des compétences solides dans l’intégration de solutions matérielles et logicielles, l’optimisation des performances des systèmes embarqués, ainsi que dans la gestion sécurisée des données et des réseaux. Il est préparé à répondre aux défis technologiques actuels et futurs en concevant des systèmes robustes, fiables et adaptés aux besoins industriels et sociétaux..
+Conditions et Procédures d’admission:
+Diplômes requis : 2 Années Préparatoires au Cycle Ingénieur
+Spécialité : Mathématique, Physique et chimie et Sciences de l’ingénieurGénie mécanique, Génie électrique, Génie des procédés, Génie des matériaux, Génie industrielSciences & Techniques pour l’IngénieurEau, Environnement et équivalent.Cycle ingénieurMathématique/Physique2 Années PréparatoiresSciences de l&#39;IngénieurSciences et TechniquesSMI, SMA, SMPInformatiqueMathématique physiqueMathématiques, InformatiqueMP MIPCPhysique, électronique et Informatique
+Procédures de sélection :Etude du dossier : Accès sur concours à la suite de deux années de classes préparatoires
+Semestre 1
+Réseaux Informatiques
+Programmation Orientée Objet : Java et Python
+Systèmes Informatiques : Systèmes Open Source et Windows
+L1 : Espagnol L2 : Français
+Systèmes Numériques
+Digital Skills: Compétences Numériques
+Analyse et Traitement du Signal
+semestre 2
+Réseaux Avancés : Routage et Commutation
+Architecture des Systèmes Embarqués
+Introduction à la Sécurité des Systèmes Embarqués
+Informatique Industrielle
+Architectures et Programmation DSP
+L1 : Anglais L2 : Français
+Power Skills
+Semestre 3
+Capteurs & Instrumentation
+L1 : Espagnol / L2 : Français
+Programmation des Circuits FPGA
+Administration Systèmes et Réseaux
+Technologies IoT: Architectes, Protocoles et Applications
+Administration Bases de Données
+Introduction à l'Intelligence Artificielle
+semestre 4
+Virtualisation, Cloud et Edge Computing
+Fondamentaux et Application de l'IA
+L1 : Espagnol / L2 : Anglais
+Cybersecurity & Ethical Hacking
+Technologies des Réseaux Mobiles
+Cryptographie et Sécurité des Services
+Gestion de Projet et Entreprise
+Semestre 5
+Audit des Systèmes d’Information et Management de la Sécurité des Systèmes d’Information
+Gestion de l’Innovation et Management de Projet Informatique
+Les Stratégies de Gestion des Risques
+Sécurité d’une Infrastructure Digitale
+Conception des Systèmes Embarqués Avancés
+L1 : Espagnol / L2 : Anglais
+Employment Skills
+semestre 6
+Projet de Fin d’Etudes

@@ -1,0 +1,18 @@
+cet document concerne departement-genie-informatique.txt
+Département de Génie Informatique
+Chef du département : CHKOURI Mohamed Yassin, Email :mychkouri@uae.ac.ma
+Enseignants chercheurs permanents du département :
+Anouar ABTOY
+Mohammed AL ACHHAB
+Zineb BESRI
+Mohamed Yassin CHKOURI
+Mohamed CHRAYAH
+Jaber EL BOUHDIDI
+Youssama EL HAJJAM
+Yasser EL KHAMLICHI
+Yacine EL YOUNOUSSI
+Reda JOURANI
+Abdeljebbar MANSOUR
+Yasser MESMOUDI
+Abderrahim TAHIRI
+Abderrahim HACHCHANE IMANE

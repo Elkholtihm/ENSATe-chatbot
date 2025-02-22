@@ -1,0 +1,29 @@
+cet document concerne laboratoire-Système d’Information et Génie Logiciel.txt
+Laboratoire : Système d’Information et Génie Logiciel
+Identification du Laboratoire :
+Nom de la structure : Système d’Information et Génie Logiciel
+Acronyme de la structure : SIGL
+Domaine de recherche : Informatique
+Disciplines : Systèmes d’Information et de Communication
+Mots clés : Systèmes d’Information, e-Learning, BigData, Systèmes Intelligents, Génie Logiciel, Modélisation, NLP.
+Responsable du Laboratoire de Recherche :
+Nom Prénom : CHKOURI Mohamed Yassin
+Spécialité : Informatique
+Tél : 06 62 17 91 27
+E-mail : yassin.chkouri@gmail.com
+Membres de la structure de recherche :
+Pr. CHKOURI MOHAMED YASSIN
+Pr. ABTOY ANOUAR
+Pr. ACHKARI BEGDOURI Mohammed
+Pr. BENTAJER AHMED
+Pr. EL BOUHDIDI JABER
+Pr. EL HAJJAMY OUSSAMA
+Pr. EL KHAMLICHI YASSER
+Pr. EL MURABET AMINA
+Pr. EL YOUNOUSSI YACINE
+Pr. MANSOUR ABDELJEBAR
+Pr. MEDOURI ABDELLATIF
+Pr. MESMOUDI YASSER
+Pr. SARIR HICHAM
+Pr. TAHIRI ABDERRAHIM
+Pr. TOUIL HICHAM
