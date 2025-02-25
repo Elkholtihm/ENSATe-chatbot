@@ -48,7 +48,7 @@ client.create_collection(
     vectors_config={
         "default": VectorParams(size=embedding_model.get_sentence_embedding_dimension(), distance=Distance.DOT)
     },
-    hnsw_config=HnswConfigDiff(ef_construct=300)  # Increases accuracy
+    hnsw_config=HnswConfigDiff(ef_construct=300)  
 )
 
 # Upsert points
@@ -57,14 +57,16 @@ print("Data indexed successfully!")
 
 
 #-----------------Search--------------------------
-query = "parlez moi de l'emploi du temps du filiere mecatronique"
+query = "parlez moi de l'emploi du temps du filiere mecatronique 2 eme annee"
 query_embedding = normalize(embedding_model.encode(query))
 
 results = client.search(
     collection_name=collection_name,
     query_vector=("default", query_embedding), 
-    limit=5
+    limit=1
 )
 
 for result in results:
-    print(f"Score: {result.score}, Chunk: {result.payload['chunk']}\n")
+    metadata = result.payload
+    print(f'metadata : {metadata["chunk"]}')
+    print(f'source : {result.payload["source"]}')

@@ -121,3 +121,6 @@ def chunking_txt_files(folder_path):
 # Normalize embeddings
 def normalize(vector):
     return vector / np.linalg.norm(vector)
+
+
+

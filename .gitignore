@@ -6,3 +6,5 @@ data.json
 .ipynb_checkpoints/
 recherche&report/
 aliases/
+__pycache__/
+data\data_final.zip
