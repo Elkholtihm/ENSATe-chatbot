@@ -1,5 +1,5 @@
 myenv/
-app.py
+app0.py
 raft_state.json
 collections/
 data.json
@@ -8,3 +8,4 @@ recherche&report/
 aliases/
 __pycache__/
 data\data_final.zip
+.env

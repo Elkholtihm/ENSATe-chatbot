@@ -1,8 +1,8 @@
 import os
 import json
-from transformers import AutoTokenizer
-from transformers import CamembertTokenizer
+from transformers import AutoTokenizer, pipeline, CamembertTokenizer
 import numpy as np
+from groq import Groq
 
 os.environ["HF_HUB_TIMEOUT"] = "300"  # Increase to 5 minutes
 
@@ -122,5 +122,69 @@ def chunking_txt_files(folder_path):
 def normalize(vector):
     return vector / np.linalg.norm(vector)
 
+# this function is used for retriving data from Qdrant
+def Search(query, client, collection_name, embedding_model, top_k=1):
+    query_embedding = normalize(embedding_model.encode(query))
+
+    results = client.search(
+        collection_name=collection_name,
+        query_vector=("default", query_embedding), 
+        limit=top_k
+    )
+    chunks = []
+    document_path = []
+    for result in results:
+        metadata = result.payload
+        chunks.append(metadata["chunk"])
+        document_path.append(result.payload["source"])
+
+    if top_k == 1:
+        return results, document_path
+    else:
+        return results
+#-----------------generation--------------------------
+# using a generation model-----
+def Generation(query, serch_results, model_name= 'HuggingFaceH4/zephyr-7b-alpha', max_new_tokens= 150, num_return_sequences = 1, temperature=0.7):
+    generator = pipeline('text-generation', model=model_name, device_map="auto")
+
+    if serch_results:
+        context = serch_results[0].payload["chunk"]
+        prompt = f"Contexte: {context}\nQuestion: {query}\nRéponse:"
+
+        response = generator(prompt, max_new_tokens=max_new_tokens, num_return_sequences=num_return_sequences, temperature=temperature)
+        print(f"Réponse générée : {response[0]['generated_text'].split('Réponse:')[-1].strip()}")
+    else:
+        print("Aucun résultat trouvé.")
 
 
+# using groq API-----
+def GenerationGroq(query, serch_results, groq_key, temperature=0.6,max_tokens=650 ):
+    client = Groq(api_key=groq_key)
+
+    prompt = f"""
+    Vous êtes un assistant utile. Utilisez le contexte suivant pour répondre à la question de l'utilisateur (reponse en francais). Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas.
+
+    Contexte:
+    {serch_results}
+
+    Question:
+    {query}
+
+    Réponse:
+    """
+
+    # Get the email content
+    completion = client.chat.completions.create(
+        model="gemma2-9b-it",
+        messages=[{'role': 'user', 'content': f'''{prompt}'''}],
+        temperature=temperature,
+        max_tokens=max_tokens,
+        top_p=1,
+        stream=True,
+        stop=None,
+    )
+    generations = ""
+    for chunk in completion:
+        if chunk.choices[0].delta.content:
+            generations += chunk.choices[0].delta.content
+    print(f"Réponse générée : {generations}")

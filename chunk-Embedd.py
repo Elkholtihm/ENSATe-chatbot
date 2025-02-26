@@ -5,7 +5,6 @@ import numpy as np
 import uuid
 from utils import chunking_json_files, chunking_txt_files, normalize
 
-
 # chunk json files
 folder_path = r"data\data_final\emploi-temps"
 chunks_json, metadata_json = chunking_json_files(folder_path)
@@ -29,6 +28,8 @@ embeddings = np.array([normalize(vec) for vec in embeddings])
 
 # -----------------Qdrant-----------------
 client = QdrantClient(host= 'localhost', port = 6333)
+collection_name = "ENSA_chatbot"
+
 points = [
     PointStruct(
         id=str(uuid.uuid4()),
@@ -39,7 +40,6 @@ points = [
 ]
 
 # Create collection (if not exists)
-collection_name = "ENSA_chatbot"
 if client.collection_exists(collection_name):
     client.delete_collection(collection_name)
 
@@ -54,19 +54,3 @@ client.create_collection(
 # Upsert points
 client.upsert(collection_name=collection_name, points=points)
 print("Data indexed successfully!")
-
-
-#-----------------Search--------------------------
-query = "parlez moi de l'emploi du temps du filiere mecatronique 2 eme annee"
-query_embedding = normalize(embedding_model.encode(query))
-
-results = client.search(
-    collection_name=collection_name,
-    query_vector=("default", query_embedding), 
-    limit=1
-)
-
-for result in results:
-    metadata = result.payload
-    print(f'metadata : {metadata["chunk"]}')
-    print(f'source : {result.payload["source"]}')
