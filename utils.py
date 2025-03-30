@@ -3,7 +3,11 @@ import json
 from transformers import AutoTokenizer, pipeline, CamembertTokenizer
 import numpy as np
 from groq import Groq
-
+from sentence_transformers import SentenceTransformer
+from qdrant_client import QdrantClient
+from qdrant_client.models import PointStruct ,VectorParams, Distance, HnswConfigDiff
+import numpy as np
+import uuid
 os.environ["HF_HUB_TIMEOUT"] = "300"  # Increase to 5 minutes
 
 tokenizer = CamembertTokenizer.from_pretrained("dangvantuan/sentence-camembert-base")
@@ -163,6 +167,7 @@ def GenerationGroq(query, serch_results, groq_key, temperature=0.6,max_tokens=65
 
     prompt = f"""
     Vous êtes un assistant utile. Utilisez le contexte suivant pour répondre à la question de l'utilisateur (reponse en francais). Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas.
+    si le context ne coresspond pas au question dit a l'utlisateur de donner plus de contexte.
 
     Contexte:
     {serch_results}
@@ -175,7 +180,7 @@ def GenerationGroq(query, serch_results, groq_key, temperature=0.6,max_tokens=65
 
     # Get the email content
     completion = client.chat.completions.create(
-        model="gemma2-9b-it",
+        model="llama3-70b-8192",
         messages=[{'role': 'user', 'content': f'''{prompt}'''}],
         temperature=temperature,
         max_tokens=max_tokens,
@@ -187,4 +192,54 @@ def GenerationGroq(query, serch_results, groq_key, temperature=0.6,max_tokens=65
     for chunk in completion:
         if chunk.choices[0].delta.content:
             generations += chunk.choices[0].delta.content
-    print(f"Réponse générée : {generations}")
+    return generations
+
+
+
+
+def chunk_Embedd(client, collection_name, embedding_model):
+    # chunk json files
+    folder_path = r"data\data_final\emploi-temps"
+    chunks_json, metadata_json = chunking_json_files(folder_path)
+
+    # chunk txt files
+    folder_path = r"data\data_final"
+    chunks_txt, metadata_txt = chunking_txt_files(folder_path)  
+
+    chunks = chunks_json + chunks_txt
+    metadata = metadata_json + metadata_txt
+
+    print(f"Number of chunks: {len(chunks)}")
+    print(f"Number of metadata: {len(metadata)}")
+
+
+
+    # -----------------Embedding-----------------
+    embeddings = embedding_model.encode(chunks, convert_to_numpy=True)
+    embeddings = np.array([normalize(vec) for vec in embeddings])
+
+    # -----------------Qdrant-----------------
+    points = [
+        PointStruct(
+            id=str(uuid.uuid4()),
+            vector={"default": embeddings[i].tolist()},
+            payload={"chunk": chunks[i], **metadata[i]}
+        )
+        for i in range(len(chunks))
+    ]
+
+    # Create collection (if not exists)
+    if client.collection_exists(collection_name):
+        client.delete_collection(collection_name)
+
+    client.create_collection(
+        collection_name=collection_name,
+        vectors_config={
+            "default": VectorParams(size=embedding_model.get_sentence_embedding_dimension(), distance=Distance.DOT)
+        },
+        hnsw_config=HnswConfigDiff(ef_construct=300)  
+    )
+
+    # Upsert points
+    client.upsert(collection_name=collection_name, points=points)
+    print("Data indexed successfully!")
