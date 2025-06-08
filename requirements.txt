@@ -1,1 +1,7 @@
 flask
+transformers
+groq
+sentence-transformers
+qdrant-client
+sentencepiece
+python-dotenv
