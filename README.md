@@ -173,7 +173,7 @@ python manage.py create_demo_users
 
 ## License
 
-This project is licensed under the **MIT License (Attribution Required)** — see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the **MIT License (Attribution Required)**, see the [LICENSE](./LICENSE) file for details.
 
 If you use this project (in whole or in part), please include the following credit:
 "Original work by Hamza Kholti (https://github.com/Elkholtihm/)"
