@@ -42,6 +42,7 @@ It leverages semantic search with vector embeddings and LLM-based response gener
 ---
 
 ## Project Structure
+```bash
 ensa_chatbot/
 ├── manage.py
 ├── ensa_chatbot/
@@ -87,7 +88,7 @@ ensa_chatbot/
 │       └── ...
 ├── requirements.txt
 └── .env
-
+```
 
 ---
 
