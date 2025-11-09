@@ -11,12 +11,6 @@ It leverages semantic search with vector embeddings and LLM-based response gener
 
 ---
 
-## Architecture
-
-![System Architecture](Readme_pic/architecture.png)
-
----
-
 ## Key Features
 
 ### Authentication & User Management
@@ -38,6 +32,12 @@ It leverages semantic search with vector embeddings and LLM-based response gener
 ### Admin Dashboard
 - Manage users and system usage  
 - View chat history and statistics  
+
+---
+
+## Architecture
+
+![System Architecture](Readme_pic/architecture.png)
 
 ---
 
