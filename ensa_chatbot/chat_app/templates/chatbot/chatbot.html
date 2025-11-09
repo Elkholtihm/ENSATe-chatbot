@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENSA Chatbot</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/modern-chat.css' %}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <button class="new-chat-btn" onclick="newChat()">
+                <i class="fas fa-plus"></i>
+                <span>Nouvelle conversation</span>
+            </button>
+        </div>
+
+        <!-- Chat History -->
+        <div class="chat-history" id="chatHistory">
+            <div class="history-section">
+                <h3 class="history-title">Aujourd'hui</h3>
+                <div class="history-items" id="todayChats"></div>
+            </div>
+            
+            <div class="history-section">
+                <h3 class="history-title">7 derniers jours</h3>
+                <div class="history-items" id="weekChats"></div>
+            </div>
+            
+            <div class="history-section">
+                <h3 class="history-title">30 derniers jours</h3>
+                <div class="history-items" id="monthChats"></div>
+            </div>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+            <a href="{% url 'chat_app:profile' %}" class="user-profile" style="text-decoration: none; color: inherit;">
+                <div class="user-avatar">
+                    {{ username|first|upper }}
+                </div>
+                <div class="user-info">
+                    <div class="user-name">{{ username }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                </div>
+            </a>
+            <button class="menu-btn" onclick="toggleUserMenu()">
+                <i class="fas fa-ellipsis-h"></i>
+            </button>
+            
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <a href="{% url 'chat_app:profile' %}">
+                    <i class="fas fa-cog"></i> Paramètres
+                </a>
+                <a href="{% url 'chat_app:logout' %}">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="top-bar-title">
+                <i class="fas fa-robot"></i>
+                <span id="chatTitle">ENSA Chatbot</span>
+            </div>
+            <div class="top-bar-actions">
+                <button class="icon-btn" onclick="shareChat()" title="Partager">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-wrapper">
+            <div class="chat-container" id="chatContainer">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h1>Bonjour, {{ username }}!</h1>
+                    <p>Comment puis-je vous aider aujourd'hui?</p>
+                    
+                    <!-- Suggestion Cards -->
+                    <div class="suggestion-cards">
+                        <div class="suggestion-card" onclick="fillPrompt('Quel est mon emploi du temps aujourd\'hui?')">
+                            <i class="fas fa-calendar"></i>
+                            <div class="suggestion-text">
+                                <div class="suggestion-title">Emploi du temps</div>
+                                <div class="suggestion-desc">Voir mon programme</div>
+                            </div>
+                        </div>
+                        
+                        <div class="suggestion-card" onclick="fillPrompt('Quels sont les examens à venir?')">
+                            <i class="fas fa-file-alt"></i>
+                            <div class="suggestion-text">
+                                <div class="suggestion-title">Examens</div>
+                                <div class="suggestion-desc">Dates et horaires</div>
+                            </div>
+                        </div>
+                        
+                        <div class="suggestion-card" onclick="fillPrompt('Où se trouve la bibliothèque?')">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="suggestion-text">
+                                <div class="suggestion-title">Localisation</div>
+                                <div class="suggestion-desc">Trouver un lieu</div>
+                            </div>
+                        </div>
+                        
+                        <div class="suggestion-card" onclick="fillPrompt('Comment contacter le service administratif?')">
+                            <i class="fas fa-phone"></i>
+                            <div class="suggestion-text">
+                                <div class="suggestion-title">Contact</div>
+                                <div class="suggestion-desc">Informations utiles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Messages will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-container">
+                <form id="chatForm">
+                    {% csrf_token %}
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="userInput" 
+                            placeholder="Envoyez un message..."
+                            rows="1"
+                            maxlength="2000"
+                        ></textarea>
+                        <button type="submit" id="sendBtn" disabled>
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="input-footer">
+                    <div class="character-count">
+                        <span id="charCount">0</span> / 2000
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <script>
+        // Pass Django variables to JavaScript
+        window.username = "{{ username }}";
+        window.csrfToken = "{{ csrf_token }}";
+    </script>
+    <script src="{% static 'js/modern-chat.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - ENSA Chatbot</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #f7f7f8;
+            color: #2d3748;
+        }
+
+        .navbar {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: #f7fafc;
+        }
+
+        .navbar-title {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+        }
+
+        .conversation {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .conversation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .conversation-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .message-block {
+            margin-bottom: 20px;
+        }
+
+        .message-label {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .message-content {
+            background: #f7fafc;
+            padding: 16px;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+
+        .sources {
+            margin-top: 12px;
+            padding: 12px;
+            background: #edf2f7;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .source-tag {
+            display: inline-block;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin: 4px 4px 4px 0;
+            font-size: 12px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #718096;
+        }
+
+        .empty-state i {
+            font-size: 64px;
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 30px 20px;
+            }
+            
+            .conversation {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'chat_app:profile' %}" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Retour au profil
+        </a>
+        <div class="navbar-title">Historique complet</div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-history"></i> Historique des conversations</h1>
+            <p>{{ total_queries }} conversation(s) au total</p>
+        </div>
+
+        {% if chat_history %}
+            {% for chat in chat_history %}
+            <div class="conversation">
+                <div class="conversation-header">
+                    <div class="conversation-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ chat.created_at|date:"d/m/Y à H:i:s" }}
+                    </div>
+                </div>
+
+                <div class="message-block">
+                    <div class="message-label">
+                        <i class="fas fa-user"></i>
+                        Vous
+                    </div>
+                    <div class="message-content">
+                        {{ chat.query }}
+                    </div>
+                </div>
+
+                <div class="message-block">
+                    <div class="message-label">
+                        <i class="fas fa-robot"></i>
+                        ENSA Chatbot
+                    </div>
+                    <div class="message-content">
+                        {{ chat.response }}
+                    </div>
+                    
+                    {% if chat.sources %}
+                    <div class="sources">
+                        <strong>📚 Sources:</strong><br>
+                        {% with sources=chat.sources|split:"," %}
+                            {% for source in sources %}
+                                <span class="source-tag">{{ source|trim }}</span>
+                            {% endfor %}
+                        {% endwith %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <i class="fas fa-inbox"></i>
+                <h2>Aucune conversation</h2>
+                <p>Commencez à poser des questions pour voir votre historique ici!</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

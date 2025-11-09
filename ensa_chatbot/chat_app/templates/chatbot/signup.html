@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - ENSA Chatbot</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .auth-header i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .auth-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .auth-body {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i.fa-lock,
+        .input-with-icon i.fa-user,
+        .input-with-icon i.fa-envelope {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            pointer-events: none;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        .password-toggle:hover {
+            color: #667eea;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e9ecef;
+            color: #666;
+        }
+
+        .auth-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .back-link i {
+            margin-right: 5px;
+        }
+
+        /* Messages */
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .alert-error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .alert-success {
+            background: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+
+        .password-toggle:hover {
+            color: #667eea;
+        }
+
+        @media (max-width: 480px) {
+            .auth-header {
+                padding: 30px 20px;
+            }
+
+            .auth-body {
+                padding: 30px 20px;
+            }
+
+            .auth-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <i class="fas fa-user-plus"></i>
+            <h1>Créer un compte</h1>
+            <p>Rejoignez ENSA Chatbot aujourd'hui</p>
+        </div>
+
+        <div class="auth-body">
+            <a href="{% url 'chat_app:landing' %}" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à l'accueil
+            </a>
+
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'chat_app:signup' %}">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            class="form-control" 
+                            placeholder="Choisissez un nom d'utilisateur"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-control" 
+                            placeholder="votre@email.com"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-control" 
+                            placeholder="Au moins 6 caractères"
+                            required
+                        >
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('password')"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirm">Confirmer le mot de passe</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input 
+                            type="password" 
+                            id="password_confirm" 
+                            name="password_confirm" 
+                            class="form-control" 
+                            placeholder="Répétez votre mot de passe"
+                            required
+                        >
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('password_confirm')"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-user-plus"></i> S'inscrire
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Vous avez déjà un compte? 
+                <a href="{% url 'chat_app:login' %}">Se connecter</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling;
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
