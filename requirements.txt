@@ -5,3 +5,4 @@ sentence-transformers
 qdrant-client
 sentencepiece
 python-dotenv
+Django
