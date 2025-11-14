@@ -1,0 +1,102 @@
+{
+    "Lundi": [
+        {
+            "time": "08:00 - 10:00",
+            "location": "S202",
+            "module": "Conception des machines",
+            "professor": "Nasri"
+        },
+        {
+            "time": "10:30 - 12:30",
+            "location": "S202",
+            "module": "TD Conception des machines",
+            "professor": "Nasri"
+        },
+        {
+            "time": "14:00 - 16:00",
+            "location": "Amphi",
+            "module": "Management 2",
+            "professor": "Ech-Charrat"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Amphi",
+            "module": "Management 2",
+            "professor": "Ech-Charrat"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "08:00 - 10:00",
+            "location": "S202",
+            "module": "Automatisation et Instrumentation",
+            "professor": "Chouiekh/Haddi"
+        },
+        {
+            "time": "10:30 - 12:30",
+            "location": "S202",
+            "module": "TD Automatisation et Instrumentation",
+            "professor": "Chouiekh/Haddi"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "08:00 - 10:00",
+            "location": "S202",
+            "module": "Electronique embarquée",
+            "professor": "Moutakki/Zakriti"
+        },
+        {
+            "time": "10:30 - 12:30",
+            "location": "S202",
+            "module": "TD Electronique embarquée",
+            "professor": "Moutakki/Zakriti"
+        },
+        {
+            "time": "14:00 - 18:00",
+            "event": "Activités des étudiants"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "08:00 - 10:00",
+            "location": "S202",
+            "module": "Technologie de l'automobile",
+            "professor": "O.Benzarouala/Moutakki"
+        },
+        {
+            "time": "10:30 - 12:30",
+            "location": "S202",
+            "module": "TD Technologie de l'automobile",
+            "professor": "O.Benzarouala/Moutakki"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "08:00 - 10:00",
+            "location": "S202",
+            "module": "Actionneurs",
+            "professor": "Haddi/Sanbi"
+        },
+        {
+            "time": "10:30 - 12:30",
+            "location": "S202",
+            "module": "TD Actionneurs",
+            "professor": "Haddi/Sanbi"
+        }
+    ],
+    "Samedi": [
+        {
+            "time": "08:00 - 10:00",
+            "location": "S202",
+            "module": "TP Actionneurs",
+            "professor": "Haddi"
+        },
+        {
+            "time": "10:30 - 12:30",
+            "location": "S202",
+            "module": "TP Actionneurs",
+            "professor": "Haddi"
+        }
+    ]
+}

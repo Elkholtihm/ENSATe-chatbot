@@ -1,0 +1,95 @@
+{
+    "Lundi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S104",
+            "module": "Conception des circuits VLSI",
+            "professor": "Bolajraf"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S104",
+            "module": "Conception des circuits VLSI",
+            "professor": "Bolajraf"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "S104",
+            "module": "Apprentissage Automatique et Applications",
+            "professor": "Okar"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S104",
+            "module": "Électronique Analogique pour les Télécommunications",
+            "professor": "Zakriti/El Adib"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S104",
+            "module": "Électronique Analogique pour les Télécommunications",
+            "professor": "Zakriti/El Adib"
+        },
+        {
+            "time": "12:30 - 14:00",
+            "location": "CRL",
+            "module": "Langues étrangères 2",
+            "professor": "Nejjari/Malla Hussein"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S104",
+            "module": "Apprentissage Automatique et Applications",
+            "professor": "Okar"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S104",
+            "module": "Apprentissage Automatique et Applications",
+            "professor": "Okar"
+        },
+        {
+            "time": "14:30 - 18:00",
+            "event": "Activités des étudiants"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S104",
+            "module": "Modulation numérique",
+            "professor": "Raissouni/El Adib"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S104",
+            "module": "Modulation numérique",
+            "professor": "Raissouni/El Adib"
+        },
+        {
+            "time": "12:30 - 14:00",
+            "location": "Amphi",
+            "module": "Culture & arts & sport skills",
+            "professor": "Hira"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi",
+            "module": "Modélisation et POO",
+            "professor": "Jourani"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Amphi",
+            "module": "Modélisation et POO",
+            "professor": "Jourani"
+        }
+    ],
+    "Samedi": []
+}

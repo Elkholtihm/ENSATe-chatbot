@@ -1,5 +1,5 @@
 // ============================================================================
-// ENSA Chatbot - Modern Chat Interface JavaScript
+// ENSA Chatbot - Modern Chat Interface JavaScript (FIXED)
 // ============================================================================
 
 // Global state
@@ -12,6 +12,7 @@ let isTyping = false;
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Chat initialized for user:', window.username);
     initializeChat();
     setupEventListeners();
     loadChatHistory();
@@ -19,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeChat() {
-    console.log('Initializing chat for user:', window.username);
     focusInput();
 }
 
@@ -48,6 +48,18 @@ function setupEventListeners() {
             e.stopPropagation();
         });
     }
+
+    // Close user menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('userMenu');
+        const menuBtn = document.querySelector('.menu-btn');
+        
+        if (menu && menuBtn) {
+            if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                menu.style.display = 'none';
+            }
+        }
+    });
 }
 
 function setupTextareaAutoResize() {
@@ -157,9 +169,8 @@ async function handleSubmit(e) {
     // Focus input
     focusInput();
 }
-
 // ============================================================================
-// MESSAGE DISPLAY
+// MESSAGE DISPLAY WITH MARKDOWN
 // ============================================================================
 
 function addMessage(role, text, sources = null) {
@@ -170,12 +181,14 @@ function addMessage(role, text, sources = null) {
     const now = new Date();
     const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
     
-    // Avatar
     const avatar = role === 'user' 
         ? window.username.charAt(0).toUpperCase()
         : '🤖';
     
     const authorName = role === 'user' ? window.username : 'ENSA Chatbot';
+    
+    // Render markdown for bot messages
+    const messageContent = role === 'bot' ? renderMarkdown(text) : escapeHtml(text);
     
     let html = `
         <div class="message-avatar">${avatar}</div>
@@ -184,10 +197,9 @@ function addMessage(role, text, sources = null) {
                 <span class="message-author">${authorName}</span>
                 <span class="message-time">${timeStr}</span>
             </div>
-            <div class="message-text">${escapeHtml(text)}</div>
+            <div class="message-text">${messageContent}</div>
     `;
     
-    // Add sources if provided
     if (sources && sources.length > 0) {
         html += `
             <div class="message-sources">
@@ -201,8 +213,14 @@ function addMessage(role, text, sources = null) {
     messageDiv.innerHTML = html;
     
     container.appendChild(messageDiv);
-    scrollToBottom();
     
+    // Highlight code blocks
+    if (role === 'bot') {
+        highlightCodeBlocks(messageDiv);
+        addCopyButtons(messageDiv);
+    }
+    
+    scrollToBottom();
     return messageDiv;
 }
 
@@ -231,10 +249,14 @@ async function addMessageWithTyping(role, text, sources = null) {
     container.appendChild(messageDiv);
     const textElement = messageDiv.querySelector('.message-text');
     
-    // Type out the message
-    await typeText(textElement, text);
+    // Type out with progressive rendering
+    await typeTextWithMarkdown(textElement, text);
     
-    // Add sources after typing is complete
+    // Highlight code blocks after typing
+    highlightCodeBlocks(messageDiv);
+    addCopyButtons(messageDiv);
+    
+    // Add sources
     if (sources && sources.length > 0) {
         const contentDiv = messageDiv.querySelector('.message-content');
         const sourcesDiv = document.createElement('div');
@@ -249,18 +271,84 @@ async function addMessageWithTyping(role, text, sources = null) {
     scrollToBottom();
 }
 
-async function typeText(element, text, speed = 20) {
-    const words = text.split(' ');
+// ============================================================================
+// MARKDOWN RENDERING
+// ============================================================================
+
+function renderMarkdown(text) {
+    if (!text) return '';
     
-    for (let i = 0; i < words.length; i++) {
-        element.textContent += (i > 0 ? ' ' : '') + words[i];
-        scrollToBottom();
-        
-        // Faster typing for better UX
-        await new Promise(resolve => setTimeout(resolve, speed));
-    }
+    // Configure marked options
+    marked.setOptions({
+        breaks: true,
+        gfm: true,
+        headerIds: false,
+        mangle: false
+    });
+    
+    return marked.parse(text);
 }
 
+async function typeTextWithMarkdown(element, text, speed = 15) {
+    // Split by sentences for smoother rendering
+    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+    let accumulated = '';
+    
+    for (const sentence of sentences) {
+        accumulated += sentence;
+        element.innerHTML = renderMarkdown(accumulated);
+        scrollToBottom();
+        await new Promise(resolve => setTimeout(resolve, speed * sentence.length));
+    }
+    
+    // Final render
+    element.innerHTML = renderMarkdown(text);
+}
+
+// ============================================================================
+// CODE HIGHLIGHTING & COPY
+// ============================================================================
+
+function highlightCodeBlocks(messageElement) {
+    const codeBlocks = messageElement.querySelectorAll('pre code');
+    codeBlocks.forEach(block => {
+        hljs.highlightElement(block);
+    });
+}
+
+function addCopyButtons(messageElement) {
+    const codeBlocks = messageElement.querySelectorAll('pre');
+    
+    codeBlocks.forEach(pre => {
+        // Wrap in container
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        
+        // Add copy button
+        const button = document.createElement('button');
+        button.className = 'code-copy-btn';
+        button.innerHTML = '<i class="fas fa-copy"></i> Copier';
+        button.onclick = () => copyCode(button, pre);
+        wrapper.appendChild(button);
+    });
+}
+
+function copyCode(button, pre) {
+    const code = pre.querySelector('code');
+    const text = code.textContent;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        button.innerHTML = '<i class="fas fa-check"></i> Copié!';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-copy"></i> Copier';
+            button.classList.remove('copied');
+        }, 2000);
+    });
+}
 // ============================================================================
 // TYPING INDICATOR
 // ============================================================================
@@ -287,9 +375,15 @@ function hideTypingIndicator() {
 async function loadChatHistory() {
     try {
         const response = await fetch('/api/history/?limit=50');
+        
+        if (!response.ok) {
+            console.error('Failed to load history:', response.status);
+            return;
+        }
+        
         const data = await response.json();
         
-        if (data.success) {
+        if (data.success && data.chats) {
             displayChatHistory(data.chats);
         }
     } catch (error) {
@@ -298,7 +392,16 @@ async function loadChatHistory() {
 }
 
 function displayChatHistory(chats) {
-    if (!chats || chats.length === 0) return;
+    if (!chats || chats.length === 0) {
+        // Show empty state
+        ['todayChats', 'weekChats', 'monthChats'].forEach(id => {
+            const section = document.getElementById(id);
+            if (section) {
+                section.innerHTML = '<div style="padding: 8px 12px; color: var(--text-secondary); font-size: 13px;">Aucune conversation</div>';
+            }
+        });
+        return;
+    }
     
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -348,9 +451,61 @@ function populateHistorySection(sectionId, chats) {
     });
 }
 
-function loadChat(chat) {
-    // Could implement loading a specific chat conversation
-    console.log('Loading chat:', chat);
+async function loadChat(chat) {
+    try {
+        console.log('Loading chat data:', chat); // DEBUG
+        
+        // Hide welcome screen
+        hideWelcomeScreen();
+        
+        // Clear current messages
+        const container = document.getElementById('chatContainer');
+        const messages = container.querySelectorAll('.message');
+        messages.forEach(msg => msg.remove());
+        
+        // Verify we have the data
+        if (!chat || !chat.query || !chat.response) {
+            console.error('Invalid chat data:', chat);
+            addMessage('bot', 'Erreur: données de conversation invalides.');
+            return;
+        }
+        
+        console.log('Adding user message:', chat.query); // DEBUG
+        // Add the original query as user message
+        addMessage('user', chat.query);
+        
+        // Parse sources
+        let sources = null;
+        if (chat.sources && chat.sources.trim() !== '') {
+            console.log('Raw sources:', chat.sources); // DEBUG
+            // Split by comma and get just the filename
+            sources = chat.sources.split(',').map(s => {
+                const trimmed = s.trim();
+                // Get filename from full path (handle both / and \)
+                const parts = trimmed.split(/[/\\]/);
+                return parts[parts.length - 1];
+            }).filter(s => s.length > 0);
+            console.log('Parsed sources:', sources); // DEBUG
+        }
+        
+        console.log('Adding bot message:', chat.response); // DEBUG
+        // Add the response as bot message
+        addMessage('bot', chat.response, sources && sources.length > 0 ? sources : null);
+        
+        // Update current chat ID
+        currentChatId = chat.id;
+        
+        // Close sidebar on mobile
+        if (window.innerWidth <= 768) {
+            toggleSidebar();
+        }
+        
+        console.log('Chat loaded successfully!'); // DEBUG
+        
+    } catch (error) {
+        console.error('Error loading chat:', error);
+        addMessage('bot', 'Erreur lors du chargement de la conversation.');
+    }
 }
 
 // ============================================================================
@@ -375,6 +530,7 @@ function newChat() {
     if (input) {
         input.value = '';
         input.style.height = 'auto';
+        handleInputChange({ target: input });
     }
     
     // Reset state
@@ -414,7 +570,8 @@ function toggleSidebar() {
 function toggleUserMenu() {
     const menu = document.getElementById('userMenu');
     if (menu) {
-        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        const isVisible = menu.style.display === 'block';
+        menu.style.display = isVisible ? 'none' : 'block';
     }
 }
 
@@ -429,14 +586,23 @@ function shareChat() {
 function scrollToBottom() {
     const container = document.getElementById('chatContainer');
     if (container) {
-        container.scrollTop = container.scrollHeight;
+        setTimeout(() => {
+            container.scrollTop = container.scrollHeight;
+        }, 100);
+    }
+}
+
+function scrollToTop() {
+    const container = document.getElementById('chatContainer');
+    if (container) {
+        container.scrollTop = 0;
     }
 }
 
 function focusInput() {
     const input = document.getElementById('userInput');
     if (input) {
-        input.focus();
+        setTimeout(() => input.focus(), 100);
     }
 }
 
@@ -445,6 +611,7 @@ function focusInput() {
 // ============================================================================
 
 function escapeHtml(text) {
+    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
@@ -480,34 +647,6 @@ function formatDate(dateString) {
 }
 
 // ============================================================================
-// MARKDOWN RENDERING (Simple)
-// ============================================================================
-
-function renderMarkdown(text) {
-    // Simple markdown rendering
-    // You can use a library like marked.js for more features
-    
-    // Code blocks
-    text = text.replace(/```(\w+)?\n([\s\S]+?)```/g, function(match, lang, code) {
-        return `<pre><code class="language-${lang || 'text'}">${escapeHtml(code.trim())}</code></pre>`;
-    });
-    
-    // Inline code
-    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
-    
-    // Bold
-    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    
-    // Italic
-    text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-    
-    // Links
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-    
-    return text;
-}
-
-// ============================================================================
 // KEYBOARD SHORTCUTS
 // ============================================================================
 
@@ -524,12 +663,18 @@ document.addEventListener('keydown', function(e) {
         newChat();
     }
     
-    // Escape: Close sidebar on mobile
+    // Escape: Close sidebar on mobile & close user menu
     if (e.key === 'Escape') {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebarOverlay');
+        const menu = document.getElementById('userMenu');
+        
         if (sidebar && sidebar.classList.contains('active')) {
             toggleSidebar();
+        }
+        
+        if (menu && menu.style.display === 'block') {
+            menu.style.display = 'none';
         }
     }
 });

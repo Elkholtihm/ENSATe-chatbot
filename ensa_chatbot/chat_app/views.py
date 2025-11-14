@@ -208,7 +208,7 @@ def handle_query(request):
         embedding_model = chatbot_config.embedding_model
         
         # Perform search
-        results, sources = Search(query, client, collection_name, embedding_model, top_k=1)
+        results, sources = Search(query, client, collection_name, embedding_model)
         print(f"[{request.user.username}] Found sources: {sources}")
         
         # Process sources
@@ -239,10 +239,10 @@ def handle_query(request):
         if source_data:
             response = GenerationGroq(
                 query, 
-                source_data[0], 
+                results, 
                 settings.GROQ_API_KEY, 
                 temperature=0.6, 
-                max_tokens=650
+                max_tokens=1500
             )
             
             if response is None:
@@ -271,7 +271,6 @@ def handle_query(request):
             
             return JsonResponse({
                 "response": response,
-                "sources": formatted_sources,
                 "success": True
             })
         else:

@@ -1,0 +1,72 @@
+cet document concerne Membres Conseil Etablissement.txt
+Les Membres de conseil de l'Ensa Tetouan :
+Liste de membres du conseil d’établissement 2021-2022-2023 : 
+Nom : REKLAOUI
+Prénom : KAMAL
+E-mail Académique : kreklaoui@uae.ac.ma
+Nom : BENKADDOUR
+Prénom : ABDELHAMID
+E-mail Académique : abdelhamid.benkaddour@uae.ac.ma
+Nom : HADDI
+Prénom : ALI
+E-mail Académique : ahaddi1@uae.ac.ma
+Nom : NEJJARI
+Prénom : AMEL
+E-mail Académique : anejjari@uae.ac.ma
+Nom : CHKOURI
+Prénom : MOHAMED YASSIN
+E-mail Académique : mchkouri@uae.ac.ma
+Nom : EL ADIB
+Prénom : SAMIR
+E-mail Académique : seladib@uae.ac.ma
+Nom : LOULY
+Prénom : ADIL
+E-mail Académique : adel.louly@uae.ac.ma
+Nom : KHOULJI
+Prénom : SAMIRA
+E-mail Académique : skhoulji@uae.ac.ma
+Nom : OULAD BENZEROUALA
+Prénom : RACHAD
+E-mail Académique : rouladbenzarouala@uae.ac.ma
+Nom : ELKHANNOUSSI
+Prénom : FADOUA
+E-mail Académique : felkhannoussi@uae.ac.ma
+Nom : HAJAJI
+Prénom : ANAS
+E-mail Académique : ahajaji@uae.ac.ma
+Nom : ABTOY
+Prénom : ANOUAR
+E-mail Académique : aabtoy@uae.ac.ma
+Nom : EL YOUNOUSSI
+Prénom : YACINE
+E-mail Académique : yacine.elyounoussi@uae.ac.ma
+Nom : ARIOUA
+Prénom : MOUNIR
+E-mail Académique : m.arioua@uae.ac.ma
+Nom : SANBI
+Prénom : MUSTAPHA
+E-mail Académique : m.sanbi@uae.ac.ma
+Nom : MALLA HUSSEIN
+Prénom : SAWSAN
+E-mail Académique : s.mallahussein@uae.ac.ma
+Nom : JOURANI
+Prénom : REDA
+E-mail Académique : rjourani@uae.ac.ma
+Nom : AYTOUNA
+Prénom : FOUAD
+E-mail Académique : faytouna@uae.ac.ma
+Nom : EL BIARI
+Prénom : AOUATEF
+E-mail Académique : aelbiari@uae.ac.ma
+Nom : EL YAMOUNI
+Prénom : BOURAIDA
+E-mail Académique : belyamouni@uae.ac.ma
+Nom : DADA
+Prénom : HASSANE
+E-mail Académique : h.dada@uae.ac.ma
+Nom : AHIDAR
+Prénom : RACHID
+E-mail Académique : rachid.ahidar@etu.uae.ac.ma
+Nom : AIT ALI
+Prénom : MOHAMED
+E-mail Académique : mohamed.aitali@etu.uae.ac.ma

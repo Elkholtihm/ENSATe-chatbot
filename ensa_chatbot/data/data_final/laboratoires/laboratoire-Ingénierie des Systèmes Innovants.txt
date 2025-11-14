@@ -1,0 +1,26 @@
+cet document concerne laboratoire-Ingénierie des Systèmes Innovants.txt
+Laboratoire : Ingénierie des Systèmes Innovants
+Identification du Laboratoire :
+Nom de la structure : Ingénierie des Systèmes Innovants
+Acronyme de la structure : ISI
+Responsable du Laboratoire de Recherche :
+Nom Prénom : KHOULJI SAMIRA
+Tél : 0666842219
+E-mail : skhoulji@uae.ac.ma
+Membres de la structure de recherche :
+Pr. AGHZOUT OTMAN
+Pr. KHOULJI SAMIRA
+Pr. EL OUALKADI AHMED
+Pr. AL MERS AHMED
+Pr. MARZOUKI FAOUZI
+Pr. JOURANI REDA
+Pr. FILALI YOUNESS
+Pr. MAHFOUDI MOHAMMED
+Pr. EL HAMMOUMI ABOUBAKR
+Pr. BENNANI ANAS
+Pr. BENAZOUZ GHIZLANE
+Pr. AMRANI AYOUB
+Pr. BEDDAOU SALMA
+Pr. OMARI OTMANE
+Pr. EL MAJDOUBI HANAN
+Pr. LAMNINI ABDELLAH

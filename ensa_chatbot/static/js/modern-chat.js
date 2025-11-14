@@ -169,9 +169,8 @@ async function handleSubmit(e) {
     // Focus input
     focusInput();
 }
-
 // ============================================================================
-// MESSAGE DISPLAY
+// MESSAGE DISPLAY WITH MARKDOWN
 // ============================================================================
 
 function addMessage(role, text, sources = null) {
@@ -182,12 +181,14 @@ function addMessage(role, text, sources = null) {
     const now = new Date();
     const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
     
-    // Avatar
     const avatar = role === 'user' 
         ? window.username.charAt(0).toUpperCase()
         : '🤖';
     
     const authorName = role === 'user' ? window.username : 'ENSA Chatbot';
+    
+    // Render markdown for bot messages
+    const messageContent = role === 'bot' ? renderMarkdown(text) : escapeHtml(text);
     
     let html = `
         <div class="message-avatar">${avatar}</div>
@@ -196,10 +197,9 @@ function addMessage(role, text, sources = null) {
                 <span class="message-author">${authorName}</span>
                 <span class="message-time">${timeStr}</span>
             </div>
-            <div class="message-text">${escapeHtml(text)}</div>
+            <div class="message-text">${messageContent}</div>
     `;
     
-    // Add sources if provided
     if (sources && sources.length > 0) {
         html += `
             <div class="message-sources">
@@ -213,8 +213,14 @@ function addMessage(role, text, sources = null) {
     messageDiv.innerHTML = html;
     
     container.appendChild(messageDiv);
-    scrollToBottom();
     
+    // Highlight code blocks
+    if (role === 'bot') {
+        highlightCodeBlocks(messageDiv);
+        addCopyButtons(messageDiv);
+    }
+    
+    scrollToBottom();
     return messageDiv;
 }
 
@@ -243,10 +249,14 @@ async function addMessageWithTyping(role, text, sources = null) {
     container.appendChild(messageDiv);
     const textElement = messageDiv.querySelector('.message-text');
     
-    // Type out the message
-    await typeText(textElement, text);
+    // Type out with progressive rendering
+    await typeTextWithMarkdown(textElement, text);
     
-    // Add sources after typing is complete
+    // Highlight code blocks after typing
+    highlightCodeBlocks(messageDiv);
+    addCopyButtons(messageDiv);
+    
+    // Add sources
     if (sources && sources.length > 0) {
         const contentDiv = messageDiv.querySelector('.message-content');
         const sourcesDiv = document.createElement('div');
@@ -261,18 +271,84 @@ async function addMessageWithTyping(role, text, sources = null) {
     scrollToBottom();
 }
 
-async function typeText(element, text, speed = 20) {
-    const words = text.split(' ');
+// ============================================================================
+// MARKDOWN RENDERING
+// ============================================================================
+
+function renderMarkdown(text) {
+    if (!text) return '';
     
-    for (let i = 0; i < words.length; i++) {
-        element.textContent += (i > 0 ? ' ' : '') + words[i];
-        scrollToBottom();
-        
-        // Faster typing for better UX
-        await new Promise(resolve => setTimeout(resolve, speed));
-    }
+    // Configure marked options
+    marked.setOptions({
+        breaks: true,
+        gfm: true,
+        headerIds: false,
+        mangle: false
+    });
+    
+    return marked.parse(text);
 }
 
+async function typeTextWithMarkdown(element, text, speed = 15) {
+    // Split by sentences for smoother rendering
+    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+    let accumulated = '';
+    
+    for (const sentence of sentences) {
+        accumulated += sentence;
+        element.innerHTML = renderMarkdown(accumulated);
+        scrollToBottom();
+        await new Promise(resolve => setTimeout(resolve, speed * sentence.length));
+    }
+    
+    // Final render
+    element.innerHTML = renderMarkdown(text);
+}
+
+// ============================================================================
+// CODE HIGHLIGHTING & COPY
+// ============================================================================
+
+function highlightCodeBlocks(messageElement) {
+    const codeBlocks = messageElement.querySelectorAll('pre code');
+    codeBlocks.forEach(block => {
+        hljs.highlightElement(block);
+    });
+}
+
+function addCopyButtons(messageElement) {
+    const codeBlocks = messageElement.querySelectorAll('pre');
+    
+    codeBlocks.forEach(pre => {
+        // Wrap in container
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        
+        // Add copy button
+        const button = document.createElement('button');
+        button.className = 'code-copy-btn';
+        button.innerHTML = '<i class="fas fa-copy"></i> Copier';
+        button.onclick = () => copyCode(button, pre);
+        wrapper.appendChild(button);
+    });
+}
+
+function copyCode(button, pre) {
+    const code = pre.querySelector('code');
+    const text = code.textContent;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        button.innerHTML = '<i class="fas fa-check"></i> Copié!';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-copy"></i> Copier';
+            button.classList.remove('copied');
+        }, 2000);
+    });
+}
 // ============================================================================
 // TYPING INDICATOR
 // ============================================================================

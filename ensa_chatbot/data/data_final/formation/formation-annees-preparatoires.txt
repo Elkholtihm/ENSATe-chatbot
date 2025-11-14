@@ -1,0 +1,30 @@
+cet document concerne formation 2 annees preparatoires
+Coordonnatrice : NEJJARI AmelCourriel :amelnejjari@yahoo.fr
+Semestre 1
+Algèbre 1
+Analyse 1
+Physique 1
+Mécanique 1
+Informatique 1
+Langue et Communication 1
+Semestre 2
+Algèbre 2
+Analyse 2
+Physique 2
+Chimie
+Mathématiques Assistées par Ordinateur (MAO)
+Langue et Communication 2
+Semestre 3
+Algèbre 3
+Analyse 3
+Physique 3
+Mécanique 2
+Informatique 2
+Langue et Communication 3
+Semestre 4
+Analyse 4
+Mathématiques Appliquées
+Physique 4
+Electronique
+Management
+Langue et Communication 4

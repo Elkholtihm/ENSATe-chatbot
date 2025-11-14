@@ -1,0 +1,22 @@
+cet document concerne labo-Mathematics computer science and decision making.txt
+Laboratoire : Mathematics computer science and decision making
+Identification du Laboratoire :
+Nom de la structure : Mathematics computer science and decision making
+Acronyme de la structure : MCSDM
+Responsable du Laboratoire de Recherche :
+Nom Prénom : BESRI ZINEB
+Tél : 0600698508
+E-mail : z.besri@uae.ac.ma
+Membres de la structure de recherche :
+Pr. BOUKOUR MUSTAPHA
+Pr. CHERKAOUI MOHAMMED
+Pr. DKHISSI IBTISSAM
+Pr. ECH-CHARRAT MOHAMMED RIDA
+Pr. EL BIARI AOUATIF
+Pr. EL FALLAHI ABDELLAH
+Pr. LAJJAM AZZA
+Pr. LOUARTITI KHALID
+Pr. LOULY ADEL
+Pr. REGHIOUI MOHAMMED
+Pr. ZLAIJI LOUBNA
+Pr. CHAFIK OKAR
