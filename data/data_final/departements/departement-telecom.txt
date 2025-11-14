@@ -1,9 +1,0 @@
-cet document concerne departement-telecom.txt
-Département : TELCOM
-Chef du département : El ADIB Samir, Email :seladib@uae.ac.ma
-Enseignants chercheurs permanents du département :
-BOLAJRAFMohamed
-CHAKKOROtman
-CHARIFMohamed
-El ADIBSamir
-RAISSOUNINaoufal

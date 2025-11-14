@@ -1,0 +1,50 @@
+{"instruction": "Quelle est la durée minimale du stage pour le DCA?", "input": "", "output": "Le stage pour le Diplôme du Cycle d'Approfondissement (DCA) doit durer au moins un mois."}
+{"instruction": "Combien d'heures de cours sont nécessaires pour obtenir le DCA?", "input": "", "output": "Le DCA nécessite entre 400 et 500 heures de cours."}
+{"instruction": "Qui est le coordonnateur du cycle ingénieur Génie Civil?", "input": "", "output": "Le coordonnateur du cycle ingénieur Génie Civil est le Professeur Khamlichi Abdellatif, joignable à khamlichi7@yahoo.es."}
+{"instruction": "Quels sont les modules TC proposés en première année du cycle ingénieur Génie Civil?", "input": "", "output": "Les modules TC en première année sont: TC1 Langues et communication 1, TC2 Management 1, TC3 Probabilités, statistiques et calcul stochastique, TC4 Réseaux informatiques, et TC5 Théorie des graphes et recherche opérationnelle."}
+{"instruction": "Quel est le nom du module GC2?", "input": "", "output": "Le module GC2 s'intitule Topographie – SIG et Télédétection."}
+{"instruction": "Combien de modules de géotechnique sont proposés dans le cursus Génie Civil?", "input": "", "output": "Il y a quatre modules de géotechnique: GC7 Géotechnique 1, GC13 Mécanique des sols, GC15 Géotechnique 2, et GC14 Hydrologie, hydrogéologie et techniques de forage."}
+{"instruction": "Quelle est l'adresse email de la coordinatrice de la filière GSTR?", "input": "", "output": "L'adresse email de la coordinatrice, Professeur Samira Khoulji, est skhoulji@uae.ac.ma."}
+{"instruction": "Combien d'options sont disponibles au cinquième semestre de la filière GSTR?", "input": "", "output": "Il y a deux options disponibles au cinquième semestre: Systèmes de Télécommunications et Réseaux, et Cybersécurité et Cyberdéfense."}
+{"instruction": "Quels sont les cours de cybersécurité au semestre 5 option Cybersécurité?", "input": "", "output": "Les cours incluent: Cybersécurité, Audit & Normes, WSN, IoT, Cryptographie, Virtualisation Cloud Computing, SDN, et Cyberdéfense et cyberattaque."}
+{"instruction": "Quels sont les prérequis académiques pour la filière Génie en Cybersécurité?", "input": "", "output": "Il faut avoir complété deux années de classes préparatoires au Cycle Ingénieur, avec spécialité en Mathématiques, Physique, Chimie, ou Sciences de l'Ingénieur."}
+{"instruction": "Quelles langues sont enseignées au premier semestre de Cybersécurité?", "input": "", "output": "Les langues L1 et L2 enseignées sont l'Espagnol et le Français."}
+{"instruction": "Quel module est enseigné au semestre 4 concernant le hacking éthique?", "input": "", "output": "Le module 'Cybersecurity & Ethical Hacking' est enseigné au semestre 4."}
+{"instruction": "Quand commence le cours de Management 2 pour IAD?", "input": "", "output": "Le cours de Management 2 commence le lundi à 14h00 et se poursuit jusqu'à 18h00."}
+{"instruction": "Qui enseigne le module Intelligence artificielle pour le département IAD?", "input": "", "output": "Le Professeur El Younoussi enseigne le module Intelligence artificielle."}
+{"instruction": "Quelle est la salle du cours de Bases de Données relationnelles?", "input": "", "output": "Le cours de Bases de Données relationnelles se déroule en salle S205."}
+{"instruction": "Y a-t-il des activités étudiantes programmées le jeudi?", "input": "", "output": "Non, les activités étudiantes sont programmées le mercredi de 14h30 à 18h00."}
+{"instruction": "Quel professeur enseigne Java avancé le samedi?", "input": "", "output": "Le Professeur El Hajjamy enseigne Java avancé le samedi."}
+{"instruction": "À quelle heure se termine le dernier cours du vendredi pour GI?", "input": "", "output": "Le dernier cours du vendredi se termine à 18h00."}
+{"instruction": "Combien de séances de Management 2 ont lieu par semaine?", "input": "", "output": "Il y a deux séances de Management 2 par semaine, le lundi de 14h00 à 16h00 et de 16h30 à 18h00."}
+{"instruction": "Quel est le nom complet du département ITSI?", "input": "", "output": "Le département s'appelle Génie et Technologie des Systèmes Industriels (ITSI)."}
+{"instruction": "Combien d'enseignants permanents compte le département ITSI?", "input": "", "output": "Le département ITSI compte 7 enseignants permanents."}
+{"instruction": "Qui est la cheffe du département IAD?", "input": "", "output": "La cheffe du département IAD est la professeure Khoulji Samira."}
+{"instruction": "Combien d'enseignants permanents travaillent au département IAD?", "input": "", "output": "Il y a 5 enseignants permanents au département IAD."}
+{"instruction": "Quel est le nom complet du département SMAD?", "input": "", "output": "Le département s'appelle Sciences Mathématiques et Aide à la Décision (SMAD)."}
+{"instruction": "Combien d'enseignants-chercheurs permanents compte le département SMAD?", "input": "", "output": "Le département SMAD compte 15 enseignants-chercheurs permanents."}
+{"instruction": "Qui est le responsable du département TELCOM?", "input": "", "output": "Le responsable du département TELCOM est El ADIB Samir."}
+{"instruction": "Combien d'enseignants permanents sont listés dans le département TELCOM?", "input": "", "output": "Cinq enseignants permanents sont mentionnés dans le département TELCOM."}
+{"instruction": "Quel groupe suit le cours de Culture digitale?", "input": "", "output": "La Section 1 suit le cours de Culture digitale le jeudi."}
+{"instruction": "Où se déroule le cours de Chimie générale le jeudi?", "input": "", "output": "Le cours de Chimie générale se tient en Amphi 1 le jeudi de 14h30 à 16h00."}
+{"instruction": "Quel professeur enseigne Thermodynamique le vendredi pour la Section 2?", "input": "", "output": "Le Professeur Al Mers enseigne Thermodynamique et Statique des Fluides le vendredi pour la Section 2."}
+{"instruction": "Combien de cours ont lieu en Amphi 2 le mardi?", "input": "", "output": "Il y a plusieurs cours en Amphi 2 le mardi, dont Algorithmique et Chimie."}
+{"instruction": "Quand a lieu le cours de Maths pour le groupe GR4?", "input": "", "output": "Le cours de Maths pour le groupe GR4 a lieu le lundi de 08h30 à 10h00 en salle S 005."}
+{"instruction": "Qui enseigne le cours de Physique 3 le mardi?", "input": "", "output": "Le Professeur Lagziri enseigne le cours de Physique 3 le mardi pour la Section 2."}
+{"instruction": "Quels groupes ont Physique 4 en salle S 006 le mercredi?", "input": "", "output": "Les groupes GR5 et GR6 ont Physique 4 en salle S 006 le mercredi de 10h30 à 12h00."}
+{"instruction": "Qui dirige la séance d'ouverture des activités le samedi?", "input": "", "output": "La séance d'ouverture des activités le samedi est animée par les Professeurs Belmir et Islami."}
+{"instruction": "Quel est le module enseigné le lundi pour le Big Data?", "input": "", "output": "Le lundi, le module 'Algorithmique avancée et programmation' est enseigné par le Professeur Belcaid en salle S105."}
+{"instruction": "Où se déroule le cours Culture & arts & sport skills?", "input": "", "output": "Le cours Culture & arts & sport skills se déroule à l'amphithéâtre (Amphi) avec le Professeur Hira."}
+{"instruction": "Y a-t-il des cours le samedi pour le Big Data?", "input": "", "output": "Non, aucun cours n'est prévu le samedi pour la filière Big Data."}
+{"instruction": "Qui enseigne Fondamentaux du Big Data?", "input": "", "output": "Le Professeur Sassi enseigne le module Fondamentaux du Big Data le mercredi."}
+{"instruction": "Quelle est la première classe du lundi pour Génie Civil?", "input": "", "output": "La première classe du lundi est Construction métallique de 08:00 à 10:00 en salle S200."}
+{"instruction": "Quand est le TD de Routes?", "input": "", "output": "Le TD de Routes a lieu le mardi de 10:30 à 12:30 en salle S200."}
+{"instruction": "Quel est le dernier cours du jeudi?", "input": "", "output": "Le dernier cours du jeudi est le TD de Béton armé, de 10:30 à 12:30 en salle S200."}
+{"instruction": "Qui enseigne Hydraulique urbaine?", "input": "", "output": "Le Professeur M. Tahiri enseigne Hydraulique urbaine le vendredi matin."}
+{"instruction": "Quelles sont les heures de TP1 en Théories des Langages le lundi?", "input": "", "output": "Le TP1 se déroule le lundi de 08:30 à 10:00 dans le laboratoire STPI7."}
+{"instruction": "Où se tient le cours de Langues étrangères 2 le mardi?", "input": "", "output": "Le cours se tient le mardi de 14:30 à 16:00 dans le CRL."}
+{"instruction": "Quel est le programme de Modélisation Orientée Objet le mercredi?", "input": "", "output": "Le mercredi, le module est dispensé de 08:30 à 10:00 puis de 10:30 à 12:00 par le professeur Besri."}
+{"instruction": "Quels sont les horaires des TP de Systèmes d'Exploitation le vendredi?", "input": "", "output": "Les TP se tiennent de 08:30 à 10:00 et de 14:30 à 16:00 dans le laboratoire STPI7."}
+{"instruction": "Quel module débute à 08:00 le lundi pour Mécatronique?", "input": "", "output": "Le module 'Conception des machines' commence à 08:00 le lundi en salle S202."}
+{"instruction": "Qui enseigne le TD de l'Automatisation le mardi?", "input": "", "output": "Le TD de l'Automatisation et Instrumentation est enseigné par Chouiekh et Haddi le mardi."}
+{"instruction": "Quel événement est prévu le mercredi après 14h pour Mécatronique?", "input": "", "output": "Des 'Activités des étudiants' sont organisées le mercredi de 14:00 à 18:00."}
