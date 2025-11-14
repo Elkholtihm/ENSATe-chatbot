@@ -42,6 +42,7 @@ It leverages semantic search with vector embeddings and LLM-based response gener
 ---
 
 ## Project Structure
+```bash
 ensa_chatbot/
 ├── manage.py
 ├── ensa_chatbot/
@@ -87,7 +88,7 @@ ensa_chatbot/
 │       └── ...
 ├── requirements.txt
 └── .env
-
+```
 
 ---
 
@@ -170,13 +171,6 @@ python manage.py create_demo_users
 4. Open a Pull Request
 5. Contributions and suggestions are welcome.
 
-## License
-
-This project is licensed under the **MIT License (Attribution Required)** — see the [LICENSE](./LICENSE) file for details.
-
-If you use this project (in whole or in part), please include the following credit:
-"Original work by Hamza Kholti (https://github.com/Elkholtihm/)"
-
 ## Future Perspectives
 The next planned development phase includes:
 * Fine-tuning the mistralai/Mistral-7B-Instruct-v0.2 model
@@ -184,3 +178,10 @@ The next planned development phase includes:
 * Integrating the fine-tuned model into the chatbot pipeline
 * Improving context retention and reasoning capabilities
 * Expanding the dataset with multilingual content (Arabic, French, English)
+
+  
+## License
+This project is licensed under the **MIT License (Attribution Required)**, see the [LICENSE](./LICENSE) file for details.
+If you use this project (in whole or in part), please include the following credit:
+"Original work by Hamza Kholti (https://github.com/Elkholtihm/)"
+
