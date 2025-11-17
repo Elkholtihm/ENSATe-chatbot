@@ -7,3 +7,10 @@ sentencepiece
 python-dotenv
 Django
 peft
+jq
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-core==0.2.43
+langchain-qdrant==0.1.4
+langchain-huggingface==0.0.3
+langchain-groq==0.1.10
