@@ -1,5 +1,21 @@
 # ENSA Chatbot
 
+<div align="center">
+
+## Built With
+
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![LangChain](https://img.shields.io/badge/🦜_LangChain-121212?style=for-the-badge)](https://www.langchain.com/)
+[![Hugging Face](https://img.shields.io/badge/🤗_Hugging_Face-FFD21E?style=for-the-badge&logoColor=black)](https://huggingface.co/)
+[![Transformers](https://img.shields.io/badge/Transformers-FF6F00?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/docs/transformers)
+[![Qdrant](https://img.shields.io/badge/Qdrant-DC244C?style=for-the-badge&logo=qdrant&logoColor=white)](https://qdrant.tech/)
+[![Sentence Transformers](https://img.shields.io/badge/Sentence_Transformers-00ADD8?style=for-the-badge)](https://www.sbert.net/)
+[![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
+[![Groq](https://img.shields.io/badge/Groq-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com/)
+
+</div>
+
 An intelligent chatbot application for ENSA (École Nationale des Sciences Appliquées) built with Django, RAG (Retrieval-Augmented Generation), and modern AI technologies.
 
 ---
