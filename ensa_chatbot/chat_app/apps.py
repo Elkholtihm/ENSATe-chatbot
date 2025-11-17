@@ -25,5 +25,5 @@ class ChatbotConfig(AppConfig):
             print(f"Collection exists: {collection_info}")
         except Exception as e:
             print(f"Creating new collection: {self.collection_name}")
-            data_path = os.path.join(settings.BASE_DIR, 'data', 'data_final')
+            data_path = os.path.join(settings.DATA_DIR)
             chunk_Embedd(self.client, self.collection_name, self.embedding_model, data_path)

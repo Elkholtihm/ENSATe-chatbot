@@ -1,5 +1,4 @@
 import os
-import json
 from torch import chunk
 from transformers import CamembertTokenizer
 import numpy as np
@@ -9,139 +8,249 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, VectorParams, Distance, HnswConfigDiff
 import uuid
 
+from langchain_core.language_models import LLM
+from langchain_qdrant import QdrantVectorStore
+from langchain_huggingface import HuggingFaceEmbeddings
+
+from langchain.retrievers.self_query.base import SelfQueryRetriever
+from langchain.retrievers.multi_query import MultiQueryRetriever
+from langchain.chains.query_constructor.schema import AttributeInfo
+
+from typing import Optional, List
+from groq import Groq
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
+from langchain_community.document_loaders.json_loader import JSONLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_groq import ChatGroq
+
+
+from langchain.llms import HuggingFaceHub
+
+
+def load_and_split_json(folder_path, chunk_size=800, overlap=100):
+    """
+    Load .json schedules using LangChain JSONLoader and split with RecursiveCharacterTextSplitter.
+    Returns: chunks list[str], metadata list[dict]
+    """
+
+    docs = []
+
+    # Load all JSON files inside folder using DirectoryLoader
+    loader = DirectoryLoader(
+        folder_path,
+        glob="*.json",
+        loader_cls=JSONLoader,
+        loader_kwargs={
+            "jq_schema": ".",   # load all JSON
+            "text_content": False
+        }
+    )
+
+    loaded_docs = loader.load()
+
+    # Convert JSON to readable schedule text
+    converted_docs = []
+    for doc in loaded_docs:
+        file_name = os.path.basename(doc.metadata["source"])
+        json_data = doc.page_content
+
+        lines = []
+
+        if isinstance(json_data, dict):
+            for day, schedule in json_data.items():
+                if schedule:
+                    for entry in schedule:
+                        entry_text = " | ".join(f"{k}: {v}" for k, v in entry.items())
+                        lines.append(f"{day} | {entry_text}")
+
+        text = "\n".join(lines).strip()
+
+        converted_docs.append({
+            "text": text,
+            "metadata": {
+                "name": file_name,
+                "categorie": "emploi du temps",
+                "source": doc.metadata["source"]
+            }
+        })
+
+
+    # Split using LangChain splitter
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=overlap
+    )
+
+    chunks = []
+    metadatas = []
+
+    for d in converted_docs:
+        texts = splitter.split_text(d["text"])
+        for i, t in enumerate(texts, start=1):
+            chunks.append(t)
+            meta = d["metadata"].copy()
+            meta["part"] = i
+            metadatas.append(meta)
+
+    return chunks, metadatas
+
+def load_and_split_txt(folder_path, chunk_size=800, overlap=100):
+    """
+    Load all .txt files recursively with LangChain DirectoryLoader and split them.
+    """
+
+    loader = DirectoryLoader(
+        folder_path,
+        glob="**/*.txt",
+        loader_cls=TextLoader,
+        loader_kwargs={"encoding": "utf-8"}
+    )
+
+    docs = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=overlap
+    )
+
+    chunks = []
+    metadatas = []
+
+    for doc in docs:
+        texts = splitter.split_text(doc.page_content)
+
+        category = os.path.basename(os.path.dirname(doc.metadata["source"])) or "txt"
+
+        for i, t in enumerate(texts, start=1):
+            chunks.append(t)
+            metadatas.append({
+                "name": f"{os.path.basename(doc.metadata['source'])} (part {i})",
+                "categorie": category,
+                "source": doc.metadata["source"],
+                "part": i
+            })
+
+    return chunks, metadatas
+
+
+
 os.environ["HF_HUB_TIMEOUT"] = "300"
 
 tokenizer = CamembertTokenizer.from_pretrained("dangvantuan/sentence-camembert-base")
-
-# --- helper utilities ---
-def _clean_text(text: str) -> str:
-    """Basic text normalization: collapse whitespace, strip."""
-    return " ".join(text.split()).strip()
-
-def _token_windows_from_text(text: str, tokenizer, chunk_size=512, overlap=50):
-    """
-    Encode text to token ids and yield token windows (list of id lists).
-    Returns generator of (token_window, start_idx).
-    """
-    tokens = tokenizer.encode(text)
-    if len(tokens) == 0:
-        return
-
-    step = max(1, chunk_size - overlap)
-    for start in range(0, len(tokens), step):
-        window = tokens[start:start + chunk_size]
-        yield window, start
-
-def chunking_json_files(folder_path, tokenizer=tokenizer, chunk_size=512, overlap=50):
-    """
-    Read JSON schedule files and produce token-based sliding-window chunks.
-    Returns: (chunks:list[str], metadata:list[dict])
-    """
-    chunks = []
-    metadata = []
-
-    for file in os.listdir(folder_path):
-        if not file.endswith(".json"):
-            continue
-        file_path = os.path.join(folder_path, file)
-        with open(file_path, "r", encoding="utf-8") as f:
-            try:
-                data = json.load(f)
-            except Exception as e:
-                # skip or log invalid JSON
-                print(f"Skipping {file_path}: JSON error {e}")
-                continue
-
-        # Build a clean, structured, human-friendly text for the schedule
-        lines = [f"Document: {file}"]
-        for day, schedule in data.items():
-            if not schedule:
-                continue
-            for entry in schedule:
-                # format nicely: "Jour: Lundi | Matière: X | Prof: Y | Salle: Z | Heure: 08:00-10:00"
-                entry_parts = [f"{k}: {v}" for k, v in entry.items()]
-                lines.append(f"{day} | " + " | ".join(entry_parts))
-
-        text = _clean_text("\n".join(lines))
-
-        # Produce token windows and decode each window back to text
-        part = 1
-        for token_window, start in _token_windows_from_text(text, tokenizer, chunk_size=chunk_size, overlap=overlap):
-            chunk_text = tokenizer.decode(token_window, skip_special_tokens=True).strip()
-            # Store chunk text and metadata (part numbering starts at 1)
-            chunks.append(chunk_text)
-            metadata.append({
-                "name": f"{file} (partie {part})",
-                "categorie": "emploi du temps",
-                "source": file_path,
-                "part": part,
-                "token_start": int(start)
-            })
-            part += 1
-
-        # if file was empty we might want one empty chunk? skip.
-
-    return chunks, metadata
-
-def chunking_txt_files(folder_path, tokenizer=tokenizer, chunk_size=512, overlap=50):
-    """
-    Chunk plain .txt files using token-level sliding windows.
-    Returns: (chunks:list[str], metadata:list[dict])
-    """
-    chunks = []
-    metadata = []
-
-    for root, dirs, files in os.walk(folder_path):
-        for file in files:
-            if not file.endswith(".txt"):
-                continue
-            file_path = os.path.join(root, file)
-            with open(file_path, "r", encoding="utf-8") as f:
-                raw = f.read()
-
-            text = _clean_text(raw)
-            category = os.path.basename(root) or "txt"
-
-            part = 1
-            for token_window, start in _token_windows_from_text(text, tokenizer, chunk_size=chunk_size, overlap=overlap):
-                chunk_text = tokenizer.decode(token_window, skip_special_tokens=True).strip()
-                chunks.append(chunk_text)
-                metadata.append({
-                    "name": f"{file} (partie {part})",
-                    "categorie": category,
-                    "source": file_path,
-                    "part": part,
-                    "token_start": int(start)
-                })
-                part += 1
-
-    return chunks, metadata
-
 
 def normalize(vector):
     """Normalize embeddings"""
     return vector / np.linalg.norm(vector)
 
-def Search(query, client, collection_name, embedding_model, top_k=3):
-    """Retrieve top_k relevant chunks from Qdrant"""
-    query_embedding = normalize(embedding_model.encode(query))
 
-    results = client.search(
+# -------------------------
+#   Main unified search()
+# -------------------------
+def Search(
+    query,
+    client,
+    collection_name,
+    embedding_model,
+    groq_key=None,
+    mode="default",
+    top_k=3
+):
+    """
+    mode='default'  → cosine search (your current method)
+    mode='self'     → Self-Query Retriever (LLM reasons over metadata)
+    mode='multi'    → Multi-Query Retriever (LLM generates multiple queries)
+    """
+
+    # -------------------------
+    # DEFAULT MODE (your old search)
+    # -------------------------
+    if mode == "default":
+        query_embedding = normalize(embedding_model.encode(query))
+
+        results = client.search(
+            collection_name=collection_name,
+            query_vector=("default", query_embedding),
+            limit=top_k
+        )
+
+        chunks = [r.payload["chunk"] for r in results]
+        context = "\n---\n".join(chunks)
+        sources = [r.payload["source"] for r in results]
+
+        return context, sources
+
+    # -------------------------
+    # LLM is required for self/multi retrievers
+    # -------------------------
+    if groq_key is None:
+        raise ValueError("groq_key is required when using mode='self' or 'multi'")
+
+    # Build LangChain VectorStore wrapper for Qdrant
+    embedding = HuggingFaceEmbeddings(model_name="dangvantuan/sentence-camembert-base")
+    vectorstore = QdrantVectorStore(
+        client=client,
+        embedding=embedding,
         collection_name=collection_name,
-        query_vector=("default", query_embedding),
-        limit=top_k
+        vector_name="default",
+        content_payload_key="chunk"
     )
 
-    # Extract only the text chunks
-    chunks = [r.payload["chunk"] for r in results]
+    llm = ChatGroq(
+        groq_api_key=groq_key,
+        model_name="openai/gpt-oss-20b",
+        temperature=0
+        )
 
-    # Merge chunks into a readable context
-    context_text = "\n---\n".join(chunks)
+    # ------------------------------------------
+    # SELF-QUERY RETRIEVER (LLM filters metadata)
+    # ------------------------------------------
+    if mode == "self":
+        metadata_fields = [
+            AttributeInfo(name="name", description="Document name", type="string"),
+            AttributeInfo(name="categorie", description="Document category", type="string"),
+            AttributeInfo(name="source", description="Original file path", type="string"),
+            AttributeInfo(name="part", description="Chunk part number", type="integer"),
+            ]
+    
+        self_retriever = SelfQueryRetriever.from_llm(
+            llm=llm,
+            vectorstore=vectorstore,
+            document_contents="ENSA documents",
+            metadata_field_info=metadata_fields,
+            verbose=True
+        )
 
-    # Also extract sources (optional)
-    documents_path = [r.payload["source"] for r in results]
+        docs = self_retriever.invoke(query)
 
-    return context_text, documents_path
+
+        chunks = [d.page_content for d in docs]
+        sources = [d.metadata.get("source") for d in docs if d.metadata.get("source")]
+
+        context = "\n---\n".join(chunks)
+        return context, sources
+
+    # ------------------------------------------
+    # MULTI-QUERY RETRIEVER (LLM expands queries)
+    # ------------------------------------------
+    if mode == "multi":
+        base_ret = vectorstore.as_retriever(search_kwargs={"k": top_k})
+
+        multi = MultiQueryRetriever.from_llm(
+            retriever=base_ret,
+            llm=llm,
+            include_original=True
+        )
+                
+        docs = multi.invoke(query)
+
+        chunks = [d.page_content for d in docs]
+        sources = [d.metadata.get("source") for d in docs if d.metadata.get("source")]
+
+        context = "\n---\n".join(chunks)
+        print(f"----------------------- Multi-Query retrieved {context}")
+        return context, sources
+
+    raise ValueError("mode must be 'default', 'self', or 'multi'")
 
 
 def GenerationGroq(query, search_results, groq_key, temperature=0.6, max_tokens=2000):
@@ -170,7 +279,7 @@ def GenerationGroq(query, search_results, groq_key, temperature=0.6, max_tokens=
     """
 
     completion = client.chat.completions.create(
-        model="openai/gpt-oss-20b",
+        model="openai/gpt-oss-safeguard-20b",
         messages=[{'role': 'user', 'content': prompt}],
         temperature=temperature,
         max_completion_tokens=max_tokens,
@@ -194,8 +303,9 @@ def chunk_Embedd(client: QdrantClient, collection_name: str, embedding_model: Se
     """
     # chunk
     json_folder = os.path.join(data_path, "emploi-temps")
-    chunks_json, metadata_json = chunking_json_files(json_folder, tokenizer=tokenizer, chunk_size=chunk_size, overlap=overlap)
-    chunks_txt, metadata_txt = chunking_txt_files(data_path, tokenizer=tokenizer, chunk_size=chunk_size, overlap=overlap)
+    chunks_json, metadata_json = load_and_split_json(json_folder)
+    chunks_txt, metadata_txt = load_and_split_txt(data_path)
+
 
     chunks = chunks_json + chunks_txt
     metadata = metadata_json + metadata_txt
