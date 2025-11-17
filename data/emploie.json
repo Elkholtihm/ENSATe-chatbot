@@ -1,0 +1,1872 @@
+{
+    "emploi du temps-2AP1-section-1": {
+        "Lundi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Algèbre 2",
+            "group": "Section 1",
+            "professor": "Louartiti"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Chimie générale",
+            "group": "Section 1",
+            "professor": "Bounab"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Analyse",
+            "group": "GR3"
+        }
+        ],
+        "Mardi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR2"
+        },
+        {
+            "time": "08:30 - 10:00",
+            "location": "Salle 2",
+            "module": "Anglais 1",
+            "group": "GR1"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Algorithmique",
+            "group": "Section 1",
+            "professor": "A. Tahiri"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Salle 2",
+            "module": "Chimie",
+            "group": "GR3"
+        }],
+        "Mercredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Analyse 2",
+            "group": "Section 1",
+            "professor": "Filali"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Thermodynamique et Statique des Fluides",
+            "group": "Section 1",
+            "professor": "El Khannoussi"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR2"
+        },
+        {
+            "event": "Activités des étudiants",
+            "time": "14:00 - 18:00"
+        }
+        ],
+        "Jeudi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Culture digitale",
+            "group": "Section 1",
+            "professor": "Idaomar"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Salle 2",
+            "module": "Anglais 1",
+            "group": "GR3"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Thermo.",
+            "group": "GR3"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR2"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR1"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Salle 2",
+            "module": "Analyse",
+            "group": "GR1"
+        }
+        ],
+        "Vendredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Thermo.",
+            "group": "GR2"
+        },
+        {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Algèbre",
+            "group": "GR3"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR3"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Algèbre",
+            "group": "GR1"
+        }
+        ],
+        "Samedi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR1"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR2"
+        }
+        ]
+    },
+    "emploi du temps-2AP1-section-2": {
+        "Lundi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR5"
+            },
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR6"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR6"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Analyse",
+            "group": "GR5"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 1",
+            "module": "Algorithmique",
+            "group": "Section 2",
+            "professor": "A. Tahiri"
+            }],
+        "Mardi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Analyse 2",
+            "group": "Section 2"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Algèbre 2",
+            "group": "Section 2"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR4"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Salle 1",
+            "module": "Chimie",
+            "group": "GR4"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Salle 1",
+            "module": "Analyse",
+            "group": "GR6"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR6"
+            }
+        ],
+        "Mercredi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR4"
+            },
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR5"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Analyse",
+            "group": "GR4"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR5"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 1",
+            "module": "Culture digitale",
+            "group": "Section 2"
+            },
+            {
+            "event": "Activités des étudiants",
+            "time": "14:00 - 18:00"
+            }
+        ],
+        "Jeudi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR4"
+            },
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR5"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Chimie générale",
+            "group": "Section 2",
+            "professor": "Bounab"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR4"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR5"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR6"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 1",
+            "module": "Algèbre",
+            "group": "GR6"
+            }
+        ],
+        "Vendredi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Thermodynamique et Statique des Fluides",
+            "group": "Section 2",
+            "professor": "Al Mers"
+            }],
+        "Samedi": []
+    },
+    "emploi du temps-2AP2-section-1": {
+        "Lundi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR5"
+            },
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR6"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR6"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Analyse",
+            "group": "GR5"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 1",
+            "module": "Algorithmique",
+            "group": "Section 2",
+            "professor": "A. Tahiri"
+            }],
+        "Mardi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Analyse 2",
+            "group": "Section 2"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Algèbre 2",
+            "group": "Section 2"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR4"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Salle 1",
+            "module": "Chimie",
+            "group": "GR4"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Salle 1",
+            "module": "Analyse",
+            "group": "GR6"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR6"
+            }
+        ],
+        "Mercredi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR4"
+            },
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Algorithmique",
+            "group": "GR5"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Salle 1",
+            "module": "Analyse",
+            "group": "GR4"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR5"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 1",
+            "module": "Culture digitale",
+            "group": "Section 2"
+            },
+            {
+            "event": "Activités des étudiants",
+            "time": "14:00 - 18:00"
+            }
+        ],
+        "Jeudi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Salle 1",
+            "module": "Anglais 1",
+            "group": "GR4"
+            },
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 2",
+            "module": "Chimie",
+            "group": "GR5"
+            },
+            {
+            "time": "10:30 - 12:00",
+            "location": "Amphi 1",
+            "module": "Chimie générale",
+            "group": "Section 2",
+            "professor": "Bounab"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Amphi 2",
+            "module": "Algèbre",
+            "group": "GR4"
+            },
+            {
+            "time": "14:30 - 16:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR5"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Salle 1",
+            "module": "Thermodynamique",
+            "group": "GR6"
+            },
+            {
+            "time": "16:30 - 18:00",
+            "location": "Amphi 1",
+            "module": "Algèbre",
+            "group": "GR6"
+            }
+        ],
+        "Vendredi": [
+            {
+            "time": "08:30 - 10:00",
+            "location": "Amphi 1",
+            "module": "Thermodynamique et Statique des Fluides",
+            "group": "Section 2",
+            "professor": "Al Mers"
+            }],
+        "Samedi": []          
+    },
+    "emploi du temps-2AP2-section-2": 
+    {
+        "Lundi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S 005",
+                "module": "Maths",
+                "group": "GR4"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S 005",
+                "module": "Maths",
+                "group": "GR5"
+            },
+            {
+                "time": "12:30 - 14:00",
+                "location": "Amphi",
+                "module": "Analyse 4",
+                "group": "Sections 1 et 2",
+                "professor": "Cherkaoui"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S 006",
+                "module": "Anglais",
+                "group": "GR6"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "Amphi",
+                "module": "Physique 3",
+                "group": "Section 2",
+                "professor": "Lagziri"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "Amphi",
+                "module": "Maths Appliqués",
+                "group": "Section 2",
+                "professor": "El Biari"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Management",
+                "group": "Section 2",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Management",
+                "group": "Section 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S 005",
+                "module": "Physique 3",
+                "group": "GR6"
+            },
+            {
+                "time": "08:30 - 10:00",
+                "location": "S 005",
+                "module": "Physique 3",
+                "group": "GR5"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S 006",
+                "module": "Physique 4",
+                "group": "GR5"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S 006",
+                "module": "Physique 4",
+                "group": "GR6"
+            },
+            {
+                "time": "12:30 - 14:00",
+                "location": "Amphi",
+                "module": "Maths Appliqués",
+                "group": "Sections 1 et 2",
+                "professor": "El Biari"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "Amphi",
+                "module": "Analyse 4",
+                "group": "Section 2",
+                "professor": "Cherkaoui"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "Amphi",
+                "module": "Physique 4",
+                "group": "Section 2",
+                "professor": "Khoulji"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S 006",
+                "module": "Physique 4",
+                "group": "GR4"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S 005",
+                "module": "Analyse 4",
+                "group": "GR4"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S 005",
+                "module": "Analyse 4",
+                "group": "GR5"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S 005",
+                "module": "Analyse 4",
+                "group": "GR6"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S 006",
+                "module": "Physique 3",
+                "group": "GR4"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S 005",
+                "module": "Maths",
+                "group": "GR6"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S 005",
+                "module": "Anglais",
+                "group": "GR4"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S 005",
+                "module": "Anglais",
+                "group": "GR5"
+            }
+        ],
+        "Samedi": [
+            {
+                "time": "10:30 - 12:00",
+                "location": "Amphi",
+                "module": "Activités d'ouverture",
+                "group": "Sections 1 et 2",
+                "professor": "Belmir/Islami"
+            }
+        ]
+    },
+    "emploi du temps-Big data & IA-1ere annee": 
+    {
+        "Lundi": [
+          {
+            "time": "S105",
+            "location": "S105",
+            "module": "Algorithmique avancée et programmation",
+            "professor": "Belcaid"
+          }
+        ],
+        "Mardi": [
+          {
+            "time": "S105",
+            "location": "S105",
+            "module": "Visualisation des données",
+            "professor": "Sassi"
+          },
+          {
+            "time": "S103",
+            "location": "S103",
+            "module": "Langues étrangères 2",
+            "professor": "El Morabet"
+          }
+        ],
+        "Mercredi": [
+          {
+            "time": "S105",
+            "location": "S105",
+            "module": "Fondamentaux du Big Data",
+            "professor": "Sassi"
+          },
+          {
+            "event": "Activités des étudiants"
+          }
+        ],
+        "Jeudi": [
+          {
+            "time": "S105",
+            "location": "S105",
+            "module": "Apprentissage Automatique",
+            "professor": "Hachchane"
+          },
+          {
+            "time": "Amphi",
+            "location": "Amphi",
+            "module": "Culture & arts & sport skills",
+            "professor": "Hira"
+          }
+        ],
+        "Vendredi": [
+          {
+            "time": "S105",
+            "location": "S105",
+            "module": "Algèbre linéaire numérique pour l'analyse de données",
+            "professor": "Louly"
+          }
+        ],
+        "Samedi": []
+      },
+      "emploi du temps-Genie civile-1ere annee":
+      {
+        "Lundi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S103",
+                "module": "Mécanique des fluides",
+                "professor": "El Khannoussi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S103",
+                "module": "Mécanique des fluides",
+                "professor": "El Khannoussi"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "CRL",
+                "module": "Langues étrangères 2",
+                "professor": "Nejjari/Malla Hussein"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S103",
+                "module": "Géologie de l'Ingénieur",
+                "professor": "Khamlichi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S103",
+                "module": "Géologie de l'Ingénieur",
+                "professor": "Khamlichi"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S103",
+                "module": "Géotechnique 1",
+                "professor": "Bounab"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S103",
+                "module": "Géotechnique 1",
+                "professor": "Bounab"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S103",
+                "module": "Résistance des matériaux 2",
+                "professor": "A.El Bakari"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S103",
+                "module": "Résistance des matériaux 2",
+                "professor": "A.El Bakari"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Culture & arts & sport skills",
+                "professor": "Hira"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S103",
+                "module": "Topographie et urbanisme",
+                "professor": "Bannour/El Yamouni"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S103",
+                "module": "Topographie et urbanisme",
+                "professor": "Bannour/El Yamouni"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-Genie cybersecurity et systeme embarque-1ere annee":
+    {
+        "Lundi": [
+            {
+                "time": "10:30 - 12:00",
+                "location": "S004",
+                "module": "Informatique industrielle",
+                "professor": "Baghouri"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S004",
+                "module": "Informatique industrielle",
+                "professor": "Baghouri"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S004",
+                "module": "Architectures et programmation DSP",
+                "professor": "Errachidi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S004",
+                "module": "Architectures et programmation DSP",
+                "professor": "Errachidi"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S004",
+                "module": "Langues étrangères 2",
+                "professor": "El Morabit"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S004",
+                "module": "Introduction à la sécurité des systèmes embarqués",
+                "professor": "Wadiai"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S004",
+                "module": "Introduction à la sécurité des systèmes embarqués",
+                "professor": "Wadiai"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S004",
+                "module": "Réseaux avancés : routage et commutation",
+                "professor": "Aytouna"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S004",
+                "module": "Réseaux avancés : routage et commutation",
+                "professor": "Aytouna"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Culture & arts & sport skills",
+                "professor": "Hira"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S004",
+                "module": "Architecture des systèmes embarqués",
+                "professor": "Wadiai"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S004",
+                "module": "Architecture des systèmes embarqués",
+                "professor": "Wadiai"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-Genie informatique-1ere annee":
+    {
+        "Lundi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "STPI7",
+                "module": "TP1 - Théories des Langages et Compilation",
+                "professor": "Al Achhab"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "STPI7",
+                "module": "Théories des Langages et Compilation",
+                "professor": "Al Achhab"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "STPI7",
+                "module": "TP2 - Théories des Langages et Compilation",
+                "professor": "Al Achhab"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "STPI7",
+                "module": "TP2 - Développement Web",
+                "professor": "Jourani"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "STPI7",
+                "module": "Développement Web",
+                "professor": "Jourani"
+            },
+            {
+                "time": "12:30 - 14:00",
+                "location": "STPI7",
+                "module": "TP1 - Développement Web",
+                "professor": "Jourani"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "CRL",
+                "module": "Langues étrangères 2",
+                "professor": "Nejjari/Malla Hussein"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "STPI7",
+                "module": "Modélisation Orientée Objet",
+                "professor": "Besri"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "STPI7",
+                "module": "Modélisation Orientée Objet",
+                "professor": "Besri"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "STPI7",
+                "module": "TP1 - Programmation Orientée Objet Java",
+                "professor": "El Bouhdidi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "STPI7",
+                "module": "Programmation Orientée Objet Java",
+                "professor": "El Bouhdidi"
+            },
+            {
+                "time": "12:30 - 14:00",
+                "location": "STPI7",
+                "module": "TP2 - Programmation Orientée Objet Java",
+                "professor": "El Bouhdidi"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Culture & arts & sport skills",
+                "professor": "Hira"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "STPI7",
+                "module": "TP2 - Systèmes d’Exploitation et Linux",
+                "professor": "El Bouhdidi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "STPI7",
+                "module": "Systèmes d’Exploitation et Linux",
+                "professor": "El Bouhdidi"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "STPI7",
+                "module": "TP1 - Systèmes d’Exploitation et Linux",
+                "professor": "El Bouhdidi"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-Genie mecatronique-1ere annee":
+    {
+        "Lundi": [
+            {
+                "time": "10:30 - 12:00",
+                "location": "CRL",
+                "module": "Langues étrangères 2",
+                "professor": "Nejjari/Malla Hussein"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S106",
+                "module": "Matériaux pour l'industrie et RDM",
+                "professor": "Nasri"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S106",
+                "module": "Matériaux pour l'industrie et RDM",
+                "professor": "Nasri"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S106",
+                "module": "Automatique",
+                "professor": "O.Benzarouala"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S106",
+                "module": "Automatique",
+                "professor": "O.Benzarouala"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "12:30 - 14:00",
+                "location": "Amphi",
+                "module": "Culture & arts & sport skills",
+                "professor": "Hira"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S106",
+                "module": "Mécanique",
+                "professor": "O.Benzarouala"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S106",
+                "module": "Mécanique",
+                "professor": "O.Benzarouala"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S106",
+                "module": "Énergétique et Mécanique des Fluides",
+                "professor": "O.Benzarouala"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S106",
+                "module": "Énergétique et Mécanique des Fluides",
+                "professor": "O.Benzarouala"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Modélisation et POO",
+                "professor": "Jourani"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Modélisation et POO",
+                "professor": "Jourani"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-Genie systeme telecom et reseaux-1ere annee":
+    {
+        "Lundi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S104",
+                "module": "Conception des circuits VLSI",
+                "professor": "Bolajraf"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S104",
+                "module": "Conception des circuits VLSI",
+                "professor": "Bolajraf"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S104",
+                "module": "Apprentissage Automatique et Applications",
+                "professor": "Okar"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S104",
+                "module": "Électronique Analogique pour les Télécommunications",
+                "professor": "Zakriti/El Adib"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S104",
+                "module": "Électronique Analogique pour les Télécommunications",
+                "professor": "Zakriti/El Adib"
+            },
+            {
+                "time": "12:30 - 14:00",
+                "location": "CRL",
+                "module": "Langues étrangères 2",
+                "professor": "Nejjari/Malla Hussein"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S104",
+                "module": "Apprentissage Automatique et Applications",
+                "professor": "Okar"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S104",
+                "module": "Apprentissage Automatique et Applications",
+                "professor": "Okar"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S104",
+                "module": "Modulation numérique",
+                "professor": "Raissouni/El Adib"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S104",
+                "module": "Modulation numérique",
+                "professor": "Raissouni/El Adib"
+            },
+            {
+                "time": "12:30 - 14:00",
+                "location": "Amphi",
+                "module": "Culture & arts & sport skills",
+                "professor": "Hira"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Modélisation et POO",
+                "professor": "Jourani"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Modélisation et POO",
+                "professor": "Jourani"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-genie supply chain management-1ere annee":
+    {
+        "Lundi": [
+            {
+                "time": "14:30 - 16:00",
+                "location": "S003",
+                "module": "Management de la qualité",
+                "professor": "Sarir"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S003",
+                "module": "Management de la qualité",
+                "professor": "Sarir"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S003",
+                "module": "Techniques d'achat et de réduction des coûts",
+                "professor": "Sarir"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S003",
+                "module": "Techniques d'achat et de réduction des coûts",
+                "professor": "Sarir"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "S003",
+                "module": "Modélisation & évaluation des performances des systèmes industriels",
+                "professor": "Larioui"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S003",
+                "module": "Modélisation & évaluation des performances des systèmes industriels",
+                "professor": "Larioui"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S003",
+                "module": "Apprentissage automatique",
+                "professor": "El Fallahi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S003",
+                "module": "Apprentissage automatique",
+                "professor": "El Fallahi"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "S003",
+                "module": "Optimisation combinatoire",
+                "professor": "Dkhissi"
+            },
+            {
+                "time": "10:30 - 12:00",
+                "location": "S003",
+                "module": "Optimisation combinatoire",
+                "professor": "Dkhissi"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Culture & arts & sport skills",
+                "professor": "Hira"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:30 - 10:00",
+                "location": "CRL",
+                "module": "Langues étrangères 2",
+                "professor": "Nejjari/Malla Hussein"
+            },
+            {
+                "time": "14:30 - 16:00",
+                "location": "Amphi",
+                "module": "Modélisation et POO",
+                "professor": "Jourani"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Modélisation et POO",
+                "professor": "Jourani"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-Big data & IA-2ere annee":    
+    {
+        "Lundi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S206",
+                "module": "Fondamentaux de l'intelligence artificielle",
+                "professor": "Belcaid"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S206",
+                "module": "Fondamentaux de l'intelligence artificielle",
+                "professor": "Belcaid"
+            },
+            {
+                "time": "14:30 - 16:30",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S206",
+                "module": "Théorie de l'information",
+                "professor": "Wadiai"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S206",
+                "module": "Théorie de l'information",
+                "professor": "Wadiai"
+            },
+            {
+                "time": "14:30 - 16:30",
+                "location": "S206",
+                "module": "Analyse du web",
+                "professor": "Sassi"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S206",
+                "module": "Éthique et droit",
+                "professor": "Rekaloui"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S206",
+                "module": "Éthique et droit",
+                "professor": "Rekaloui"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S206",
+                "module": "Applications de l'intelligence artificielle",
+                "professor": "Aghzout"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S206",
+                "module": "Applications de l'intelligence artificielle",
+                "professor": "Aghzout"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S206",
+                "module": "Les techniques de veille",
+                "professor": "Aghzout"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S206",
+                "module": "Les techniques de veille",
+                "professor": "Aghzout"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-genie civile-2ere annee":    
+    {
+        "Lundi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S200",
+                "module": "Construction métallique",
+                "professor": "Attajkani"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S200",
+                "module": "TD Construction métallique",
+                "professor": "Attajkani"
+            },
+            {
+                "time": "14:30 - 16:30",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S200",
+                "module": "Routes",
+                "professor": "Bannour"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S200",
+                "module": "TD Routes",
+                "professor": "Bannour"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S200",
+                "module": "Calcul des structures",
+                "professor": "El-Bakari"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S200",
+                "module": "TD Calcul des structures",
+                "professor": "El-Bakari"
+            },
+            {
+                "time": "14:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S200",
+                "module": "Béton armé",
+                "professor": "Attajkani"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S200",
+                "module": "TD Béton armé",
+                "professor": "Attajkani"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S200",
+                "module": "Hydraulique urbaine",
+                "professor": "M.Tahiri"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S200",
+                "module": "TD Hydraulique urbaine",
+                "professor": "M.Tahiri"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-genie informatique-2ere annee":    
+    {
+        "Lundi": [
+            {
+                "time": "14:00 - 16:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S205",
+                "module": "TP-1 Bases de Données relationnelles: Objet et Répartie",
+                "professor": "Chrayah"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S205",
+                "module": "Bases de Données relationnelles: Objet et Répartie",
+                "professor": "Chrayah"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "S205",
+                "module": "TP-2 Bases de Données relationnelles: Objet et Répartie",
+                "professor": "Chrayah"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S205",
+                "module": "TP-2 Intelligence artificielle",
+                "professor": "El Younoussi"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S205",
+                "module": "Intelligence artificielle",
+                "professor": "El Younoussi"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "S205",
+                "module": "TP-1 Intelligence artificielle",
+                "professor": "El Younoussi"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S205",
+                "module": "TP-1 Programmation Web 2",
+                "professor": "Al Achhab"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S205",
+                "module": "Programmation Web 2",
+                "professor": "Al Achhab"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "S205",
+                "module": "TP-2 Programmation Web 2",
+                "professor": "Al Achhab"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "10:30 - 12:30",
+                "location": "S205",
+                "module": "TP-1 Programmation réseaux et sécurité Info",
+                "professor": "A.Tahiri"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "S205",
+                "module": "Programmation réseaux et sécurité Info",
+                "professor": "A.Tahiri"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S205",
+                "module": "TP-2 Programmation réseaux et sécurité Info",
+                "professor": "A.Tahiri"
+            }
+        ],
+        "Samedi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S205",
+                "module": "TP-1 Java avancé",
+                "professor": "El Hajjamy"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S205",
+                "module": "Java avancé",
+                "professor": "El Hajjamy"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "S205",
+                "module": "TP-2 Java avancé",
+                "professor": "El Hajjamy"
+            }
+        ]
+    },
+    "emploi du temps-genie mecatronique-2ere annee":    
+    {
+        "Lundi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S202",
+                "module": "Conception des machines",
+                "professor": "Nasri"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S202",
+                "module": "TD Conception des machines",
+                "professor": "Nasri"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S202",
+                "module": "Automatisation et Instrumentation",
+                "professor": "Chouiekh/Haddi"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S202",
+                "module": "TD Automatisation et Instrumentation",
+                "professor": "Chouiekh/Haddi"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S202",
+                "module": "Electronique embarquée",
+                "professor": "Moutakki/Zakriti"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S202",
+                "module": "TD Electronique embarquée",
+                "professor": "Moutakki/Zakriti"
+            },
+            {
+                "time": "14:00 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S202",
+                "module": "Technologie de l'automobile",
+                "professor": "O.Benzarouala/Moutakki"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S202",
+                "module": "TD Technologie de l'automobile",
+                "professor": "O.Benzarouala/Moutakki"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S202",
+                "module": "Actionneurs",
+                "professor": "Haddi/Sanbi"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S202",
+                "module": "TD Actionneurs",
+                "professor": "Haddi/Sanbi"
+            }
+        ],
+        "Samedi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S202",
+                "module": "TP Actionneurs",
+                "professor": "Haddi"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S202",
+                "module": "TP Actionneurs",
+                "professor": "Haddi"
+            }
+        ]
+    },
+    "emploi du temps-genie systeme telecom et reseaux-2ere annee":    
+    {
+        "Lundi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "STPI6",
+                "module": "TP Systèmes répartis et sécurité 1",
+                "professor": "A.Tahiri"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S203",
+                "module": "Systèmes répartis et sécurité 1",
+                "professor": "A.Tahiri"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S203",
+                "module": "Systèmes embarqués et temps réel 1",
+                "professor": "El Adib"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S203",
+                "module": "TD Systèmes embarqués et temps réel 1",
+                "professor": "El Adib"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S203",
+                "module": "Informatique Industrielle"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S203",
+                "module": "TD Informatique Industrielle"
+            },
+            {
+                "time": "14:00 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S203",
+                "module": "Traitement de l'image et de la parole",
+                "professor": "Charif/Bolajraf"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S203",
+                "module": "TD Traitement de l'image et de la parole",
+                "professor": "Charif/Bolajraf"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S203",
+                "module": "C# et Bases de Données relationnelles",
+                "professor": "Chrayah"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "STPI6",
+                "module": "TP C# et Bases de Données relationnelles",
+                "professor": "Chrayah"
+            }
+        ],
+        "Samedi": []
+    },
+    "emploi du temps-genie supply chain management-2ere annee": 
+    {
+        "Lundi": [
+            {
+                "time": "14:00 - 16:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "Amphi",
+                "module": "Management 2",
+                "professor": "Ech-Charrat"
+            }
+        ],
+        "Mardi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S204",
+                "module": "Exploration et analyse des données",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S204",
+                "module": "Exploration et analyse des données",
+                "professor": "Ech-Charrat"
+            },
+            {
+                "time": "14:00 - 16:00",
+                "location": "S204",
+                "module": "Analyse Fonctionnelle et Analyse de la valeur",
+                "professor": "Sarir"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S204",
+                "module": "Analyse Fonctionnelle et Analyse de la valeur",
+                "professor": "Sarir"
+            }
+        ],
+        "Mercredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S204",
+                "module": "Ordonnancement de la production",
+                "professor": "Ben Yakoub"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S204",
+                "module": "Ordonnancement de la production",
+                "professor": "Ben Yakoub"
+            },
+            {
+                "time": "14:00 - 18:00",
+                "event": "Activités des étudiants"
+            }
+        ],
+        "Jeudi": [
+            {
+                "time": "14:00 - 16:00",
+                "location": "S204",
+                "module": "Théorie de l'aide à la décision",
+                "professor": "Ait Lhassan"
+            },
+            {
+                "time": "16:30 - 18:00",
+                "location": "S204",
+                "module": "Théorie de l'aide à la décision",
+                "professor": "Ait Lhassan"
+            }
+        ],
+        "Vendredi": [
+            {
+                "time": "08:00 - 10:00",
+                "location": "S204",
+                "module": "Technologie Entreprise"
+            },
+            {
+                "time": "10:30 - 12:30",
+                "location": "S204",
+                "module": "Technologie Entreprise"
+            }
+        ],
+        "Samedi": []
+    }
+    
+    
+    
+}
+  

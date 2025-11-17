@@ -1,0 +1,11 @@
+On Monday, the schedule begins with a practical session on distributed systems and security from 8 a.m. to 10 a.m. in room STPI6, taught by A. Tahiri. Following a short break, a lecture on the same subject takes place from 10:30 a.m. to 12:30 p.m. in room S203, again led by A. Tahiri. The afternoon is devoted to Management 2: a 2‑hour lecture from 2 p.m. to 4 p.m. in the amphitheater, and a second 1½‑hour lecture from 4:30 p.m. to 6 p.m. in the same venue, both instructed by Ech‑Charrat.  
+
+Tuesday features a 2‑hour lecture on embedded systems and real‑time concepts from 8 a.m. to 10 a.m. in room S203 with Professor El Adib, followed by a 2‑hour tutorial on the same topic from 10:30 a.m. to 12:30 p.m., also in S203 and taught by El Adib.  
+
+Wednesday’s first half of the day is occupied by an Informatique Industrielle lecture from 8 a.m. to 10 a.m. in S203, then a tutorial on that subject from 10:30 a.m. to 12:30 p.m. in the same room. The remainder of the day, from 2 p.m. to 6 p.m., is set aside for student activities.  
+
+Thursday’s morning session, from 8 a.m. to 10 a.m., is a lecture on image and speech processing in S203, led by Charif and Bolajraf. The afternoon continues with a 2‑hour tutorial on the same topic from 10:30 a.m. to 12:30 p.m. in S203, again taught by Charif and Bolajraf.  
+
+Friday begins with a lecture on C# and relational databases from 8 a.m. to 10 a.m. in S203, instructed by Chrayah. A practical session on the same subject follows from 10:30 a.m. to 12:30 p.m. in room STPI6, also led by Chrayah.  
+
+Saturday has no scheduled classes.

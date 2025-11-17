@@ -1,0 +1,89 @@
+{
+    "Lundi": [
+        {
+            "time": "10:30 - 12:00",
+            "location": "S004",
+            "module": "Informatique industrielle",
+            "professor": "Baghouri"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "S004",
+            "module": "Informatique industrielle",
+            "professor": "Baghouri"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S004",
+            "module": "Architectures et programmation DSP",
+            "professor": "Errachidi"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S004",
+            "module": "Architectures et programmation DSP",
+            "professor": "Errachidi"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "S004",
+            "module": "Langues étrangères 2",
+            "professor": "El Morabit"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S004",
+            "module": "Introduction à la sécurité des systèmes embarqués",
+            "professor": "Wadiai"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S004",
+            "module": "Introduction à la sécurité des systèmes embarqués",
+            "professor": "Wadiai"
+        },
+        {
+            "time": "14:30 - 18:00",
+            "event": "Activités des étudiants"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S004",
+            "module": "Réseaux avancés : routage et commutation",
+            "professor": "Aytouna"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S004",
+            "module": "Réseaux avancés : routage et commutation",
+            "professor": "Aytouna"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi",
+            "module": "Culture & arts & sport skills",
+            "professor": "Hira"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S004",
+            "module": "Architecture des systèmes embarqués",
+            "professor": "Wadiai"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S004",
+            "module": "Architecture des systèmes embarqués",
+            "professor": "Wadiai"
+        }
+    ],
+    "Samedi": []
+}

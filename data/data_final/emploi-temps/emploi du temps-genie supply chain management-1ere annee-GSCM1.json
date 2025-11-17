@@ -1,0 +1,101 @@
+{
+    "Lundi": [
+        {
+            "time": "14:30 - 16:00",
+            "location": "S003",
+            "module": "Management de la qualité",
+            "professor": "Sarir"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "S003",
+            "module": "Management de la qualité",
+            "professor": "Sarir"
+        }
+    ],
+    "Mardi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S003",
+            "module": "Techniques d'achat et de réduction des coûts",
+            "professor": "Sarir"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S003",
+            "module": "Techniques d'achat et de réduction des coûts",
+            "professor": "Sarir"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "S003",
+            "module": "Modélisation & évaluation des performances des systèmes industriels",
+            "professor": "Larioui"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "S003",
+            "module": "Modélisation & évaluation des performances des systèmes industriels",
+            "professor": "Larioui"
+        }
+    ],
+    "Mercredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S003",
+            "module": "Apprentissage automatique",
+            "professor": "El Fallahi"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S003",
+            "module": "Apprentissage automatique",
+            "professor": "El Fallahi"
+        },
+        {
+            "time": "14:30 - 18:00",
+            "event": "Activités des étudiants"
+        }
+    ],
+    "Jeudi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "S003",
+            "module": "Optimisation combinatoire",
+            "professor": "Dkhissi"
+        },
+        {
+            "time": "10:30 - 12:00",
+            "location": "S003",
+            "module": "Optimisation combinatoire",
+            "professor": "Dkhissi"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi",
+            "module": "Culture & arts & sport skills",
+            "professor": "Hira"
+        }
+    ],
+    "Vendredi": [
+        {
+            "time": "08:30 - 10:00",
+            "location": "CRL",
+            "module": "Langues étrangères 2",
+            "professor": "Nejjari/Malla Hussein"
+        },
+        {
+            "time": "14:30 - 16:00",
+            "location": "Amphi",
+            "module": "Modélisation et POO",
+            "professor": "Jourani"
+        },
+        {
+            "time": "16:30 - 18:00",
+            "location": "Amphi",
+            "module": "Modélisation et POO",
+            "professor": "Jourani"
+        }
+    ],
+    "Samedi": []
+}

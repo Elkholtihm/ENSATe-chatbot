@@ -1,0 +1,28 @@
+cet document concerne formation-master-ts2a
+Appel à candidature 2018-2019
+Objectifs de la formation: La formation a pour but de former des futurs chercheurs dans le domaine de Machine Learning et Traitement du signal. Le programme proposé vise à appréhender des méthodes scientifiques nouvelles d’analyse, de traitement et d’interprétation des « big data » tout en répondant aux défis de l’innovation. Dans ce cadre les étudiants devront développer leurs compétences et savoir-faire dans les disciplines telles que la machine Learning, traitement du signal et l’optimisation.
+Compétences à acquérir: Les Techniques avancés de traitement et analyse avancés des signaux : audio, image et vidéo. Les différents aspects théoriques et pratiques de « machine Learning » avec l’utilisation conjointe des algorithmes de traitement du signal avancés. Les algorithmes d’optimisations appliquées dans les applications réelles.
+Débouchés de la formation: Chercheurs dans les laboratoires de recherches. Elle fournira aussi les bonnes bases pour les étudiants désirant de poursuivre des études de doctorat dans le domaine du Machine Learning et signal processing. Secteur numérique. Santé et biotechnologies. Finance, Marketing, Robotique, Assurance...
+Semestre 1
+Probabilité et statistique inférentielle
+Optimisation
+Théorie de l’Information et Codage
+Traitement Numérique du Signal
+Algorithmique et Programmation
+Méthodologie de Recherche et Rédaction scientifique
+Semestre 2
+Data Mining and Analysis
+Apprentissage Automatique
+Optimisation Avancée
+Traitement Statistique du Signal
+Traitement d’Image et d’Audio
+Traitement du Signal pour les Communications Mobiles
+Semestre 3
+Apprentissage Automatique Avancée
+Séparation aveugle des Signaux et Codage Parcimonieux
+Vision Industrielle
+Traitement du Signal Embarqué
+Traitement du Signal pour Les Robot humanoïdes
+Télédétection et Cubesat
+Semestre 4
+Projet de Fin d’Etudes
