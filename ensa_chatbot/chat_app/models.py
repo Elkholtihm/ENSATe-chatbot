@@ -56,22 +56,13 @@ class UserProfile(models.Model):
 # ============================================================================
 # Signals for automatic UserProfile management
 # ============================================================================
-
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    """Create UserProfile automatically when new User is created"""
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """Create or update UserProfile when User is saved"""
     if created:
-        UserProfile.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    """Save UserProfile when User is saved"""
-    if not hasattr(instance, 'profile'):
-        UserProfile.objects.create(user=instance)
-    else:
+        UserProfile.objects.get_or_create(user=instance)
+    elif hasattr(instance, 'profile'):
         instance.profile.save()
-
 
 @receiver(post_save, sender=ChatHistory)
 def update_profile_on_chat(sender, instance, created, **kwargs):

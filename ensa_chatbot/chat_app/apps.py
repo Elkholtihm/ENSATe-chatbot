@@ -8,6 +8,10 @@ class ChatbotConfig(AppConfig):
     name = 'chat_app'
     
     def ready(self):
+        # Import signals to register them
+        from . import models  
+    
+    def ready(self):
         """Initialize chatbot components when Django starts"""
         # Import here to avoid circular imports
         from sentence_transformers import SentenceTransformer

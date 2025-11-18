@@ -96,15 +96,13 @@ def signup_view(request):
             })
         
         # Create user
+        # Create user
         try:
             user = User.objects.create_user(
                 username=username,
                 email=email,
                 password=password
             )
-            
-            # Create user profile
-            UserProfile.objects.create(user=user)
             
             # Auto-login after registration
             login(request, user)
