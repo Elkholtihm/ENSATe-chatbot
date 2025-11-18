@@ -9,3 +9,4 @@ aliases/
 __pycache__/
 data\data_final.zip
 .env
+*.sqlite3
