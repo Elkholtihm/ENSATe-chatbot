@@ -5,6 +5,29 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Qdrant Configuration
+QDRANT_USE_CLOUD = os.getenv("QDRANT_USE_CLOUD", "False").lower() == "true"
+
+if QDRANT_USE_CLOUD:
+    # Qdrant Cloud settings
+    QDRANT_URL = os.getenv("QDRANT_URL")  # Full URL with https://
+    QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+    QDRANT_HOST = None
+    QDRANT_PORT = None
+else:
+    # Local Qdrant settings
+    QDRANT_HOST = os.getenv("QDRANT_HOST", "localhost")
+    QDRANT_PORT = int(os.getenv("QDRANT_PORT", 6333))
+    QDRANT_URL = None
+    QDRANT_API_KEY = None
+
+COLLECTION_NAME = "ENSA_chatbot"
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR.parent / 'data' / 'data_final'
 

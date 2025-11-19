@@ -23,6 +23,132 @@ function initializeChat() {
     focusInput();
 }
 
+function addMessageActions(messageDiv, originalQuery, responseText) {
+    const contentDiv = messageDiv.querySelector('.message-content');
+    
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'message-actions';
+    actionsDiv.innerHTML = `
+        <button class="message-action-btn" onclick="copyMessage(this)" title="Copier">
+            <i class="fas fa-copy"></i> Copier
+        </button>
+        <button class="message-action-btn" onclick="retryMessage('${escapeHtml(originalQuery)}')" title="Régénérer">
+            <i class="fas fa-redo"></i> Régénérer
+        </button>
+        <button class="message-action-btn" onclick="provideFeedback(this, 'good')" title="Bonne réponse">
+            <i class="fas fa-thumbs-up"></i>
+        </button>
+        <button class="message-action-btn" onclick="provideFeedback(this, 'bad')" title="Mauvaise réponse">
+            <i class="fas fa-thumbs-down"></i>
+        </button>
+    `;
+    
+    // Store response text for copy function
+    actionsDiv.dataset.responseText = responseText;
+    
+    contentDiv.appendChild(actionsDiv);
+}
+
+function copyMessage(button) {
+    const actionsDiv = button.closest('.message-actions');
+    const text = actionsDiv.dataset.responseText;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> Copié!';
+        button.classList.add('active');
+        
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.classList.remove('active');
+        }, 2000);
+    }).catch(err => {
+        console.error('Erreur copie:', err);
+        alert('Erreur lors de la copie');
+    });
+}
+
+function retryMessage(query) {
+    const input = document.getElementById('userInput');
+    if (input) {
+        input.value = query;
+        handleInputChange({ target: input });
+        
+        // Auto-submit
+        const form = document.getElementById('chatForm');
+        if (form) {
+            form.dispatchEvent(new Event('submit'));
+        }
+    }
+}
+
+async function provideFeedback(button, type) {
+    const allButtons = button.parentElement.querySelectorAll('.message-action-btn');
+    allButtons.forEach(btn => {
+        if (btn.querySelector('.fa-thumbs-up') || btn.querySelector('.fa-thumbs-down')) {
+            btn.classList.remove('active');
+        }
+    });
+    
+    button.classList.add('active');
+    
+    // Get the message content to identify which response this is for
+    const messageDiv = button.closest('.message');
+    const messageText = messageDiv.querySelector('.message-text').textContent;
+    
+    // Send feedback to backend
+    try {
+        const response = await fetch('/api/feedback/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': window.csrfToken
+            },
+            body: JSON.stringify({
+                chat_id: currentChatId,
+                feedback_type: type,
+                message_text: messageText.substring(0, 200) // First 200 chars for identification
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to save feedback');
+        }
+        
+        console.log('Feedback saved:', type);
+    } catch (error) {
+        console.error('Error saving feedback:', error);
+    }
+    
+    const message = type === 'good' ? 'Merci pour votre retour positif!' : 'Merci, nous allons améliorer nos réponses.';
+    
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; animation: slideIn 0.3s ease;';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+function getRandomLoadingMessage() {
+    const messages = [
+        'Réflexion en cours...',
+        'Analyse de votre question...',
+        'Recherche d\'informations...',
+        'Génération de la réponse...',
+        'Un instant...',
+        'Traitement en cours...'
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+}
+
+// Make functions global
+window.copyMessage = copyMessage;
+window.retryMessage = retryMessage;
+window.provideFeedback = provideFeedback;
+
 // ============================================================================
 // EVENT LISTENERS
 // ============================================================================
@@ -106,7 +232,6 @@ function handleKeyDown(e) {
 // ============================================================================
 // FORM SUBMISSION
 // ============================================================================
-
 async function handleSubmit(e) {
     e.preventDefault();
     
@@ -116,25 +241,21 @@ async function handleSubmit(e) {
     const query = input.value.trim();
     
     if (!query) return;
-    
-    // Hide welcome screen
+
+    // Switch to normal mode
     hideWelcomeScreen();
-    
-    // Add user message
     addMessage('user', query);
-    
-    // Clear input
+
     input.value = '';
     input.style.height = 'auto';
     handleInputChange({ target: input });
     
-    // Show typing indicator
     showTypingIndicator();
     isTyping = true;
     
     try {
-        // Send request
-        const response = await fetch('/api/query/', {
+        // Create EventSource for streaming
+        const response = await fetch('/query/stream/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -143,31 +264,103 @@ async function handleSubmit(e) {
             body: JSON.stringify({ query: query })
         });
         
-        const data = await response.json();
-        
-        // Hide typing indicator
         hideTypingIndicator();
-        isTyping = false;
         
-        if (response.ok) {
-            // Add bot response with typing effect
-            await addMessageWithTyping('bot', data.response, data.sources);
-            
-            // Reload chat history sidebar
-            loadChatHistory();
-        } else {
-            addMessage('bot', `Erreur: ${data.error || 'Une erreur est survenue'}`);
+        if (!response.ok) {
+            throw new Error('Request failed');
         }
+        
+        // Create bot message container
+        const messageDiv = createBotMessageContainer();
+        const textElement = messageDiv.querySelector('.message-text');
+        
+        // Read stream
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let fullText = '';
+        let sources = null;
+        
+        while (true) {
+            const { done, value } = await reader.read();
+            
+            if (done) break;
+            
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop(); // Keep incomplete line in buffer
+            
+            for (const line of lines) {
+                if (line.startsWith('data: ')) {
+                    const data = JSON.parse(line.slice(6));
+                    
+                    if (data.content) {
+                        fullText += data.content;
+                        textElement.innerHTML = renderMarkdown(fullText);
+                        scrollToBottom();
+                    }
+                    
+                    if (data.sources) {
+                        sources = data.sources;
+                    }
+
+                    if (data.done) {
+                        // Add sources if available
+                        if (sources && sources.length > 0) {
+                            const contentDiv = messageDiv.querySelector('.message-content');
+                            const sourcesDiv = document.createElement('div');
+                            sourcesDiv.className = 'message-sources';
+                            sourcesDiv.innerHTML = `
+                                <strong>📚 Sources:</strong>
+                                ${sources.map(s => `<span class="source-tag">${escapeHtml(s)}</span>`).join('')}
+                            `;
+                            contentDiv.appendChild(sourcesDiv);
+                        }
+                        
+                        highlightCodeBlocks(messageDiv);
+                        addCopyButtons(messageDiv);
+                        addMessageActions(messageDiv, query, fullText);
+                    }
+                }
+            }
+        }
+        
+        isTyping = false;
+        loadChatHistory();
         
     } catch (error) {
         console.error('Error:', error);
         hideTypingIndicator();
         isTyping = false;
-        addMessage('bot', 'Désolé, une erreur s\'est produite. Veuillez réessayer.');
+        addMessage('bot', 'Désolé, une erreur s\'est produite.');
     }
     
-    // Focus input
     focusInput();
+}
+
+function createBotMessageContainer() {
+    const container = document.getElementById('chatContainer');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    
+    messageDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+            <div class="message-header">
+                <span class="message-author">ENSA Chatbot</span>
+                <span class="message-time">${timeStr}</span>
+            </div>
+            <div class="message-text"></div>
+        </div>
+    `;
+    
+    container.appendChild(messageDiv);
+    scrollToBottom();
+    
+    return messageDiv;
 }
 // ============================================================================
 // MESSAGE DISPLAY WITH MARKDOWN
@@ -356,6 +549,18 @@ function copyCode(button, pre) {
 function showTypingIndicator() {
     const indicator = document.getElementById('typingIndicator');
     if (indicator) {
+        // Get random message
+        const message = getRandomLoadingMessage();
+        
+        // Update or create message element
+        let messageEl = indicator.querySelector('.typing-message');
+        if (!messageEl) {
+            messageEl = document.createElement('div');
+            messageEl.className = 'typing-message';
+            indicator.appendChild(messageEl);
+        }
+        messageEl.textContent = message;
+        
         indicator.style.display = 'flex';
         scrollToBottom();
     }
@@ -511,7 +716,6 @@ async function loadChat(chat) {
 // ============================================================================
 // UI HELPERS
 // ============================================================================
-
 function newChat() {
     const container = document.getElementById('chatContainer');
     const welcomeScreen = document.getElementById('welcomeScreen');
@@ -519,12 +723,7 @@ function newChat() {
     // Clear messages
     const messages = container.querySelectorAll('.message');
     messages.forEach(msg => msg.remove());
-    
-    // Show welcome screen
-    if (welcomeScreen) {
-        welcomeScreen.style.display = 'block';
-    }
-    
+        
     // Clear input
     const input = document.getElementById('userInput');
     if (input) {

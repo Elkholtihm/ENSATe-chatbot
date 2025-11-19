@@ -179,7 +179,7 @@ def chatbot_view(request):
     
     return render(request, 'chatbot/chatbot.html', context)
 
-
+# its not used, just as a backup
 @csrf_exempt
 @require_http_methods(["POST"])
 @login_required(login_url='chat_app:login')
@@ -309,7 +309,142 @@ def handle_query(request):
             "details": str(e) if settings.DEBUG else None
         }, status=500)
 
+from django.http import StreamingHttpResponse
 
+@csrf_exempt
+@require_http_methods(["POST"])
+@login_required(login_url='chat_app:login')
+def handle_query_stream(request):
+    """Stream chatbot responses in real-time like Claude/ChatGPT"""
+    if request.method != 'POST':
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+        query = data.get('query', '').strip()
+        
+        if not query:
+            return JsonResponse({"error": "No query provided"}, status=400)
+        
+        if len(query) > 2000:
+            return JsonResponse({"error": "Query too long"}, status=400)
+        
+        print(f"[{request.user.username}] Streaming query: {query}")
+        
+        # Get components
+        chatbot_config = apps.get_app_config('chat_app')
+        client = chatbot_config.client
+        collection_name = chatbot_config.collection_name
+        embedding_model = chatbot_config.embedding_model
+        
+        # Search
+        results, sources = Search(query, client, collection_name, embedding_model, 
+                                 groq_key=settings.GROQ_API_KEY, mode="multi", top_k=3)
+        
+        # Process sources
+        valid_sources = []
+        for source in sources:
+            if source is None:
+                continue
+            source = source.replace("\\", "/")
+            try:
+                if source.endswith((".json", ".txt")):
+                    valid_sources.append(source)
+            except:
+                continue
+        
+        # Return streaming response
+        return StreamingHttpResponse(
+            generate_stream(request.user, query, results, valid_sources, settings.GROQ_API_KEY),
+            content_type='text/event-stream',
+            headers={
+                'Cache-Control': 'no-cache',
+                'X-Accel-Buffering': 'no',
+            }
+        )
+        
+    except Exception as e:
+        print(f"[ERROR] Streaming error: {e}")
+        traceback.print_exc()
+        return JsonResponse({"error": str(e)}, status=500)
+
+
+def generate_stream(user, query, results, valid_sources, groq_api_key):
+    """Generator for streaming response - separate function"""
+    from groq import Groq
+    
+    if results:
+        try:
+            groq_client = Groq(api_key=groq_api_key)
+            
+            # results is already formatted string from Search function
+            context = results
+            
+            prompt = f"""
+                Vous êtes un assistant utile. Utilisez le contexte suivant pour répondre à la question de l'utilisateur de manière COMPLÈTE et DÉTAILLÉE en français.
+                IMPORTANT - FORMAT DE RÉPONSE:
+                - Utilisez le format Markdown pour structurer votre réponse
+                - Utilisez des titres (##, ###) pour organiser les sections
+                - Utilisez des listes à puces ou numérotées pour les énumérations
+                - Utilisez des tableaux Markdown pour présenter des données structurées
+                - Mettez en **gras** les informations importantes
+                - Utilisez des `backticks` pour le code ou les termes techniques
+                - Assurez-vous de terminer complètement vos phrases et tableaux
+                svp évitez de parler hors contexte.
+            Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas.
+            
+            Contexte:
+            
+            {context}
+            
+            Question:
+            
+            {query}
+            
+            Réponse:"""
+            
+            # Stream from Groq
+            completion = groq_client.chat.completions.create(
+                model="openai/gpt-oss-safeguard-20b",
+                messages=[{'role': 'user', 'content': prompt}],
+                temperature=0.6,
+                max_tokens=1500,
+                stream=True
+            )
+            
+            full_response = ""
+            for chunk in completion:
+                if chunk.choices[0].delta.content:
+                    content = chunk.choices[0].delta.content
+                    full_response += content
+                    yield f"data: {json.dumps({'content': content})}\n\n"
+            
+            # Send sources
+            formatted_sources = [s.split('/')[-1] for s in valid_sources if s]
+            yield f"data: {json.dumps({'sources': formatted_sources, 'done': True})}\n\n"
+            
+            # Save to database
+            try:
+                ChatHistory.objects.create(
+                    user=user,
+                    query=query,
+                    response=full_response,
+                    sources=', '.join(valid_sources)
+                )
+                profile = user.profile
+                profile.total_queries = user.chat_history.count()
+                profile.save()
+                print(f"[{user.username}] Streamed chat saved")
+            except Exception as e:
+                print(f"[ERROR] Failed to save: {e}")
+                
+        except Exception as e:
+            print(f"[ERROR] Stream generation error: {e}")
+            error_msg = f"Erreur lors de la génération: {str(e)}"
+            yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
+    else:
+        error_msg = "Désolé, je n'ai pas trouvé d'informations pertinentes."
+        yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
 # ============================================================================
 # User Profile & History Views (Protected)
 # ============================================================================

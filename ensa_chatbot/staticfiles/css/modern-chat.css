@@ -435,6 +435,7 @@ body {
     color: var(--text-secondary);
 }
 
+
 /* ============================================================================
    MESSAGES
 ============================================================================ */
@@ -445,6 +446,39 @@ body {
     margin-bottom: 24px;
     animation: slideIn 0.3s ease;
     max-width: 800px;
+}
+
+/* Add this: align user messages to the right */
+.message.user {
+    flex-direction: row-reverse;
+    margin-left: auto;
+}
+
+/* Bot messages stay on the left */
+.message.bot {
+    margin-right: auto;
+}
+
+/* Update user message text alignment */
+.message.user .message-text {
+    background: var(--message-user-bg);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 18px 18px 18px 4px; /* Changed from 18px 18px 4px 18px */
+    display: inline-block;
+    text-align: right; /* Add this */
+}
+
+.message.user .message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Add this */
+}
+
+.message.bot .message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Add this */
 }
 
 @keyframes slideIn {
@@ -507,18 +541,6 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     word-wrap: break-word;
-}
-
-.message.user .message-text {
-    background: var(--message-user-bg);
-    color: white;
-    padding: 12px 16px;
-    border-radius: 18px 18px 4px 18px;
-    display: inline-block;
-}
-
-.message.bot .message-text {
-    padding: 0;
 }
 
 .message-sources {
@@ -631,11 +653,28 @@ body {
    TYPING INDICATOR
 ============================================================================ */
 
+/* Typing Indicator with message - side by side */
 .typing-indicator {
     display: flex;
-    gap: 4px;
-    padding: 20px 0;
-    max-width: 800px;
+    flex-direction: row;  /* Changed from column to row */
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+}
+
+.typing-message {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-style: italic;
+    animation: fadeInOut 2s ease-in-out infinite;
+    order: 1;  /* Message first */
+}
+
+.typing-dots-container {
+    display: flex;
+    gap: 6px;
+    order: 2;  /* Dots second */
 }
 
 .typing-dot {
@@ -652,6 +691,11 @@ body {
 
 .typing-dot:nth-child(3) {
     animation-delay: 0.4s;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 @keyframes typing {
@@ -973,4 +1017,78 @@ body {
 
 .message.user .message-text p {
     margin: 0;
+}
+
+/* Centered Input Mode */
+.input-area.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 320px);
+    max-width: 800px;
+    background: transparent;
+    border: none;
+    padding: 40px 20px;
+    z-index: 10;
+}
+
+.input-area.centered .input-wrapper {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.chat-container.centered-mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Message Actions Buttons */
+.message-actions {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.message.bot:hover .message-actions {
+    opacity: 1;
+}
+
+.message-action-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.message-action-btn:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.message-action-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.message-action-btn i {
+    font-size: 12px;
+}
+
+/* Responsive for centered mode */
+@media (max-width: 768px) {
+    .input-area.centered {
+        width: calc(100% - 40px);
+    }
 }

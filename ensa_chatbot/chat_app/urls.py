@@ -39,4 +39,5 @@ urlpatterns = [
 
     
     path('query/', views.handle_query, name='handle_query'), 
+    path('query/stream/', views.handle_query_stream, name='handle_query_stream'),
 ]

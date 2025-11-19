@@ -268,6 +268,7 @@ def GenerationGroq(query, search_results, groq_key, temperature=0.6, max_tokens=
     - Mettez en **gras** les informations importantes
     - Utilisez des `backticks` pour le code ou les termes techniques
     - Assurez-vous de terminer complètement vos phrases et tableaux
+    svp évitez de parler hors contexte
     
     Contexte:
     {search_results}
@@ -294,6 +295,7 @@ def GenerationGroq(query, search_results, groq_key, temperature=0.6, max_tokens=
             generations += chunk.choices[0].delta.content
     
     return generations.strip()
+
 
 def chunk_Embedd(client: QdrantClient, collection_name: str, embedding_model: SentenceTransformer,
                  data_path: str, tokenizer=tokenizer, chunk_size=512, overlap=50, batch_size=64):
