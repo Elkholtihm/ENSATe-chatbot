@@ -1,4 +1,3 @@
-cet document concerne formation-science-des-donnees-big-data-intelligence-artificielle
 Diplôme: Ingénieur d’état, Filière Ingénieur: Sciences des Données, Big data & IA
 Objectif de la filière
 L’objectif principal de la filière Science des Données & Big Data est de former l’élève ingénieur à la collecte, au stockage, au traitement de données multiples et variées – y compris les données massives et complexes – à des fins de modélisation, d’analyse et de valorisation de ces données. Le volet IA offre à l’élève ingénieur la maîtrise des techniques, méthodes, outils et langages les plus appropriés dans le domaine de l’Intelligence Artificielle. Il est ainsi capable de concevoir des algorithmes et des modèles mais également de développer des systèmes et des applications intégrant les dernières avancées de l’Intelligence Artificielle.

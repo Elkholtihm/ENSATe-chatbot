@@ -1,4 +1,3 @@
-cet document concerne departement-sciences-mathematiques-et-aide-a-la-decision.txt
 departement : Sciences Mathématiques et Aide à la Décision (SMAD)
 Chef du département : LOULY Adel, Email : adel.louly@uae.ac.ma
 Enseignants chercheurs permanents du département:

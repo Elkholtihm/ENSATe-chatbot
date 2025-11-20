@@ -1,4 +1,3 @@
-cet document concerne labo-Mathematics computer science and decision making.txt
 Laboratoire : Mathematics computer science and decision making
 Identification du Laboratoire :
 Nom de la structure : Mathematics computer science and decision making

@@ -1,1 +1,21 @@
-This document concerns the Mathematics, Computer Science and Decision Making Laboratory. The laboratory is identified as Mathematics Computer Science and Decision Making, abbreviated MCSDM. Its research director is Zineb Besri, who can be reached at 0600698508 or by e‑mail at z.besri@uae.ac.ma. The research team consists of Professors Mustapha Boukour, Mohammed Cherkaoui, Ibtissam Dkhissi, Mohammed Rida Ech‑Charrat, Aouatif El Biari, Abdallah El Fallahi, Azza Lajjam, Khalid Louartiti, Adel Loully, Mohammed Reghiou, Loubna Zlaiji, and Okar Chafik.
+Laboratoire : Mathématiques, Informatique et Décision
+Identification du laboratoire :
+Structure : Mathématiques, Informatique et Décision
+Acronyme : MCSDM
+Responsable du laboratoire de recherche :
+Nom complet : ZINEB BESRI
+Téléphone : 0600698508
+Courriel : z.besri@uae.ac.ma
+Membres de la structure de recherche :
+Professeur BOUKOUR MUSTAPHA
+Professeur CHERKAOUI MOHAMMED
+Professeur DKHISSI IBTISSAM
+Professeur ECH-CHARRAT MOHAMMED RIDA
+Professeur EL BIARI AOUATIF
+Professeur EL FALLAHI ABDELLAH
+Professeur LAJJAM AZZA
+Professeur LOUARTITI KHALID
+Professeur LOULY ADEL
+Professeur REGHIOUI MOHAMMED
+Professeur ZLAIJI LOUBNA
+Professeur CHAFIK OKAR

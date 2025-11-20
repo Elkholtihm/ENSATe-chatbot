@@ -1,4 +1,3 @@
-cet document concerne laboratoire-Système d’Information et Génie Logiciel.txt
 Laboratoire : Système d’Information et Génie Logiciel
 Identification du Laboratoire :
 Nom de la structure : Système d’Information et Génie Logiciel

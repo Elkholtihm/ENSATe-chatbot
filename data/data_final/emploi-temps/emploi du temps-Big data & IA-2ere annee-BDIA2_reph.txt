@@ -1,1 +1,11 @@
-Le lundi, de 08h00 à 10h00 puis de 10h30 à 12h30, le cours de Fondamentaux de l'intelligence artificielle est dispensé par Belcaid dans la salle S206, tandis que de 14h30 à 16h30, le module Management 2, dirigé par Ech‑Charrat, se tient à l’amphithéâtre. Le mardi, les séances de Théorie de l'information, de 08h00 à 10h00 et de 10h30 à 12h30, sont assurées par Wadiai dans la salle S206, suivies de l’Analyse du web de 14h30 à 16h30 par Sassi, également à S206. Mercredi commence par l’Éthique et droit avec Rékaloui de 08h00 à 10h00 et de 10h30 à 12h30 dans la salle S206, puis, de 14h30 à 18h00, des activités étudiantes sont organisées. Jeudi présente deux sessions d’Applications de l'intelligence artificielle, de 08h00 à 10h00 et de 10h30 à 12h30, sous la direction d'Aghzout dans la salle S206. Vendredi propose les mêmes deux créneaux, 08h00 à 10h00 et 10h30 à 12h30, pour le module Les techniques de veille, animé par Aghzout, également à S206. Samedi ne comporte aucune activité.
+Le lundi, les étudiants suivent deux séances de Fondamentaux de l'intelligence artificielle, de 08h00 à 10h00 puis de 10h30 à 12h30, dans la salle S206, sous la direction de Belcaid. À partir de 14h30 jusqu'à 16h30, ils assistent à un cours de Management 2 en amphithéâtre, animé par Ech‑Charrat.  
+
+Le mardi, la matinée est consacrée à Théorie de l'information, de 08h00 à 10h00 et de 10h30 à 12h30, également en salle S206 avec le professeur Wadiai. L'après-midi, de 14h30 à 16h30, ils participent à un module d'Analyse du web, dirigé par Sassi, toujours en salle S206.  
+
+Le mercredi, les premières deux sessions, de 08h00 à 10h00 et de 10h30 à 12h30, portent sur Éthique et droit, en salle S206 avec le professeur Rekaloui. Entre 14h30 et 18h00, les étudiants se livrent à des activités dédiées.  
+
+Le jeudi, deux périodes de 08h00 à 10h00 et de 10h30 à 12h30 sont réservées aux Applications de l'intelligence artificielle, en salle S206, encadrées par Aghzout.  
+
+Le vendredi, les cours de Les techniques de veille s'étendent de 08h00 à 10h00 et de 10h30 à 12h30, également en salle S206 et dirigés par Aghzout.  
+
+Le samedi, aucune séance n’est prévue.

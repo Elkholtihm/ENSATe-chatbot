@@ -1,4 +1,3 @@
-cet document concerne laboratoire-Sciences et Technologies Industrielles et Civiles.txt
 Laboratoire : Sciences et Technologies Industrielles et Civiles
 Nom de la structure : Laboratoire des Sciences et Technologies Industrielles et Civiles
 Acronyme de la structure : STIC

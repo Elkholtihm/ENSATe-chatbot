@@ -1,11 +1,11 @@
-On Monday, the schedule begins with a practical session on distributed systems and security from 8 a.m. to 10 a.m. in room STPI6, taught by A. Tahiri. Following a short break, a lecture on the same subject takes place from 10:30 a.m. to 12:30 p.m. in room S203, again led by A. Tahiri. The afternoon is devoted to Management 2: a 2‑hour lecture from 2 p.m. to 4 p.m. in the amphitheater, and a second 1½‑hour lecture from 4:30 p.m. to 6 p.m. in the same venue, both instructed by Ech‑Charrat.  
+Le lundi, un TP sur les systèmes répartis et sécurité 1 se déroule de 08h à 10h dans la salle STPI6, animé par A. Tahiri, puis une séance en salle S203 de 10h30 à 12h30 portant le même module et dirigée par le même professeur. L'après-midi, un cours de Management 2 se tient de 14h à 16h et de 16h30 à 18h en amphithéâtre, encadré par Ech‑Charrat.  
 
-Tuesday features a 2‑hour lecture on embedded systems and real‑time concepts from 8 a.m. to 10 a.m. in room S203 with Professor El Adib, followed by a 2‑hour tutorial on the same topic from 10:30 a.m. to 12:30 p.m., also in S203 and taught by El Adib.  
+Le mardi, la journée commence par un cours de Systèmes embarqués et temps réel 1 de 08h à 10h en salle S203, dirigé par El Adib, suivi d'un TD du même sujet de 10h30 à 12h30 dans la même salle, toujours sous la supervision d'El Adib.  
 
-Wednesday’s first half of the day is occupied by an Informatique Industrielle lecture from 8 a.m. to 10 a.m. in S203, then a tutorial on that subject from 10:30 a.m. to 12:30 p.m. in the same room. The remainder of the day, from 2 p.m. to 6 p.m., is set aside for student activities.  
+Le mercredi, les premières heures sont consacrées à l'Informatique Industrielle : un cours de 08h à 10h et un TD de 10h30 à 12h30, tous deux en salle S203. De 14h à 18h, la journée se consacre aux activités des étudiants.  
 
-Thursday’s morning session, from 8 a.m. to 10 a.m., is a lecture on image and speech processing in S203, led by Charif and Bolajraf. The afternoon continues with a 2‑hour tutorial on the same topic from 10:30 a.m. to 12:30 p.m. in S203, again taught by Charif and Bolajraf.  
+Le jeudi, un cours de Traitement de l'image et de la parole se tient de 08h à 10h en salle S203, dirigé par Charif et Bolajraf, suivi d'un TD du même thème de 10h30 à 12h30 dans la même salle.  
 
-Friday begins with a lecture on C# and relational databases from 8 a.m. to 10 a.m. in S203, instructed by Chrayah. A practical session on the same subject follows from 10:30 a.m. to 12:30 p.m. in room STPI6, also led by Chrayah.  
+Le vendredi, un cours de C# et bases de données relationnelles se déroule de 08h à 10h en salle S203, animé par Chrayah, puis un TP du même sujet de 10h30 à 12h30 dans la salle STPI6, également sous la direction de Chrayah.  
 
-Saturday has no scheduled classes.
+Le samedi n'ouvre pas d'activités.
