@@ -339,7 +339,8 @@ def handle_query_stream(request):
         
         # Search
         results, sources = Search(query, client, collection_name, embedding_model, 
-                                 groq_key=settings.GROQ_API_KEY, mode="multi", top_k=3)
+                                 groq_keys=settings.GROQ_API_KEY, mode="multi", top_k=3)
+        print(F"-------resuuuuuuuuuuuuuults---------------{results}")
         
         # Process sources
         valid_sources = []
@@ -368,47 +369,37 @@ def handle_query_stream(request):
         traceback.print_exc()
         return JsonResponse({"error": str(e)}, status=500)
 
-
-def generate_stream(user, query, results, valid_sources, groq_api_key):
-    """Generator for streaming response - separate function"""
-    from groq import Groq
+from groq import Groq
+from groq import APIError, RateLimitError
+import json
+def generate_stream(user, query, results, valid_sources, groq_api_keys):
+    """Generator for streaming response with multiple API key fallback"""
     
-    if results:
+    if not results:
+        error_msg = "Désolé, je n'ai pas trouvé d'informations pertinentes."
+        yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
+        return
+    
+    # Ensure groq_api_keys is a list
+    if isinstance(groq_api_keys, str):
+        groq_api_keys = [groq_api_keys]
+    
+    context = results
+    prompt = f""" Vous êtes un assistant utile. vous êtes integrer dans un system RAG, Utilisez le contexte suivant pour répondre à la question de l'utilisateur de manière COMPLÈTE et DÉTAILLÉE en français. IMPORTANT - FORMAT DE RÉPONSE: - Utilisez le format Markdown pour structurer votre réponse - Utilisez des titres (##, ###) pour organiser les sections - Utilisez des listes à puces ou numérotées pour les énumérations - Utilisez des tableaux Markdown pour présenter des données structurées - Mettez en **gras** les informations importantes - Utilisez des `backticks` pour le code ou les termes techniques - Assurez-vous de terminer complètement vos phrases et tableaux svp évitez de parler hors contexte. Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas. Utilisez seulement le contexte pertinent selon la question posée. Contexte: {context} Question: {query} Réponse:"""
+
+    # Try each API key until one works
+    for key_index, api_key in enumerate(groq_api_keys):
         try:
-            groq_client = Groq(api_key=groq_api_key)
+            groq_client = Groq(api_key=api_key)
             
-            # results is already formatted string from Search function
-            context = results
-            
-            prompt = f"""
-                Vous êtes un assistant utile. Utilisez le contexte suivant pour répondre à la question de l'utilisateur de manière COMPLÈTE et DÉTAILLÉE en français.
-                IMPORTANT - FORMAT DE RÉPONSE:
-                - Utilisez le format Markdown pour structurer votre réponse
-                - Utilisez des titres (##, ###) pour organiser les sections
-                - Utilisez des listes à puces ou numérotées pour les énumérations
-                - Utilisez des tableaux Markdown pour présenter des données structurées
-                - Mettez en **gras** les informations importantes
-                - Utilisez des `backticks` pour le code ou les termes techniques
-                - Assurez-vous de terminer complètement vos phrases et tableaux
-                svp évitez de parler hors contexte.
-            Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas.
-            
-            Contexte:
-            
-            {context}
-            
-            Question:
-            
-            {query}
-            
-            Réponse:"""
+            print(f"[INFO] Attempting with API key #{key_index + 1}")
             
             # Stream from Groq
             completion = groq_client.chat.completions.create(
-                model="openai/gpt-oss-safeguard-20b",
+                model="llama-3.3-70b-versatile",
                 messages=[{'role': 'user', 'content': prompt}],
                 temperature=0.6,
-                max_tokens=1500,
+                max_completion_tokens=1500,
                 stream=True
             )
             
@@ -417,14 +408,21 @@ def generate_stream(user, query, results, valid_sources, groq_api_key):
                 if chunk.choices[0].delta.content:
                     content = chunk.choices[0].delta.content
                     full_response += content
-                    yield f"data: {json.dumps({'content': content})}\n\n"
+                    # Send each token/word individually for smoother effect
+                    yield f"data: {json.dumps({'content': content, 'type': 'token'})}\n\n"
             
-            # Send sources
+            # Send completion signal
+            yield f"data: {json.dumps({'type': 'done'})}\n\n"
+            
+            # Send sources separately
             formatted_sources = [s.split('/')[-1] for s in valid_sources if s]
-            yield f"data: {json.dumps({'sources': formatted_sources, 'done': True})}\n\n"
+            yield f"data: {json.dumps({'sources': formatted_sources, 'type': 'sources'})}\n\n"
             
             # Save to database
             try:
+                from django.apps import apps
+                ChatHistory = apps.get_model('yourapp', 'ChatHistory')
+                
                 ChatHistory.objects.create(
                     user=user,
                     query=query,
@@ -434,17 +432,53 @@ def generate_stream(user, query, results, valid_sources, groq_api_key):
                 profile = user.profile
                 profile.total_queries = user.chat_history.count()
                 profile.save()
-                print(f"[{user.username}] Streamed chat saved")
+                print(f"[{user.username}] Streamed chat saved (API key #{key_index + 1})")
             except Exception as e:
                 print(f"[ERROR] Failed to save: {e}")
-                
+            
+            # Success - exit the retry loop
+            return
+        
+        except RateLimitError as e:
+            print(f"[WARNING] Rate limit hit on API key #{key_index + 1}")
+            
+            # If this isn't the last key, try the next one
+            if key_index < len(groq_api_keys) - 1:
+                print(f"[INFO] Switching to next API key...")
+                continue
+            else:
+                # All keys exhausted
+                error_msg = "Désolé, tous les clés API ont atteint leur limite. Veuillez réessayer plus tard."
+                yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
+                return
+        
+        except APIError as e:
+            print(f"[ERROR] API error on key #{key_index + 1}: {str(e)}")
+            
+            # If this isn't the last key, try the next one
+            if key_index < len(groq_api_keys) - 1:
+                print(f"[INFO] Switching to next API key...")
+                continue
+            else:
+                error_msg = f"Erreur API: {str(e)}"
+                yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
+                return
+        
         except Exception as e:
-            print(f"[ERROR] Stream generation error: {e}")
-            error_msg = f"Erreur lors de la génération: {str(e)}"
-            yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
-    else:
-        error_msg = "Désolé, je n'ai pas trouvé d'informations pertinentes."
-        yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
+            print(f"[ERROR] Stream generation error on key #{key_index + 1}: {e}")
+            
+            # If this isn't the last key, try the next one
+            if key_index < len(groq_api_keys) - 1:
+                print(f"[INFO] Switching to next API key...")
+                continue
+            else:
+                error_msg = f"Erreur lors de la génération: {str(e)}"
+                yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
+                return
+    
+    # Fallback if loop completes without return (shouldn't happen)
+    error_msg = "Impossible de traiter votre demande. Veuillez réessayer."
+    yield f"data: {json.dumps({'content': error_msg, 'done': True})}\n\n"
 # ============================================================================
 # User Profile & History Views (Protected)
 # ============================================================================

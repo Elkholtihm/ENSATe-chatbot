@@ -288,38 +288,44 @@ async function handleSubmit(e) {
             
             buffer += decoder.decode(value, { stream: true });
             const lines = buffer.split('\n');
-            buffer = lines.pop(); // Keep incomplete line in buffer
+            buffer = lines.pop();
             
             for (const line of lines) {
                 if (line.startsWith('data: ')) {
-                    const data = JSON.parse(line.slice(6));
-                    
-                    if (data.content) {
-                        fullText += data.content;
-                        textElement.innerHTML = renderMarkdown(fullText);
-                        scrollToBottom();
-                    }
-                    
-                    if (data.sources) {
-                        sources = data.sources;
-                    }
-
-                    if (data.done) {
-                        // Add sources if available
-                        if (sources && sources.length > 0) {
-                            const contentDiv = messageDiv.querySelector('.message-content');
-                            const sourcesDiv = document.createElement('div');
-                            sourcesDiv.className = 'message-sources';
-                            sourcesDiv.innerHTML = `
-                                <strong>📚 Sources:</strong>
-                                ${sources.map(s => `<span class="source-tag">${escapeHtml(s)}</span>`).join('')}
-                            `;
-                            contentDiv.appendChild(sourcesDiv);
+                    try {
+                        const data = JSON.parse(line.slice(6));
+                        
+                        // Handle token streaming
+                        if (data.type === 'token' && data.content) {
+                            fullText += data.content;
+                            textElement.innerHTML = renderMarkdown(fullText);
+                            scrollToBottom();
                         }
                         
-                        highlightCodeBlocks(messageDiv);
-                        addCopyButtons(messageDiv);
-                        addMessageActions(messageDiv, query, fullText);
+                        // Handle sources
+                        else if (data.type === 'sources' && data.sources) {
+                            sources = data.sources;
+                        }
+                        
+                        // Handle completion
+                        else if (data.type === 'done') {
+                            if (sources && sources.length > 0) {
+                                const contentDiv = messageDiv.querySelector('.message-content');
+                                const sourcesDiv = document.createElement('div');
+                                sourcesDiv.className = 'message-sources';
+                                sourcesDiv.innerHTML = `
+                                    <strong>📚 Sources:</strong>
+                                    ${sources.map(s => `<span class="source-tag">${escapeHtml(s)}</span>`).join('')}
+                                `;
+                                contentDiv.appendChild(sourcesDiv);
+                            }
+                            
+                            highlightCodeBlocks(messageDiv);
+                            addCopyButtons(messageDiv);
+                            addMessageActions(messageDiv, query, fullText);
+                        }
+                    } catch (e) {
+                        console.error('Parse error:', e);
                     }
                 }
             }

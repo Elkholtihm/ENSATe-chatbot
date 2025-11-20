@@ -142,7 +142,7 @@ def normalize(vector):
     """Normalize embeddings"""
     return vector / np.linalg.norm(vector)
 
-
+from groq import RateLimitError, APIError
 # -------------------------
 #   Main unified search()
 # -------------------------
@@ -151,7 +151,7 @@ def Search(
     client,
     collection_name,
     embedding_model,
-    groq_key=None,
+    groq_keys=None,
     mode="default",
     top_k=3
 ):
@@ -159,6 +159,8 @@ def Search(
     mode='default'  → cosine search (your current method)
     mode='self'     → Self-Query Retriever (LLM reasons over metadata)
     mode='multi'    → Multi-Query Retriever (LLM generates multiple queries)
+    
+    groq_keys: list of API keys or single key string
     """
 
     # -------------------------
@@ -182,8 +184,15 @@ def Search(
     # -------------------------
     # LLM is required for self/multi retrievers
     # -------------------------
-    if groq_key is None:
-        raise ValueError("groq_key is required when using mode='self' or 'multi'")
+    if groq_keys is None:
+        raise ValueError("groq_keys is required when using mode='self' or 'multi'")
+
+    # Ensure groq_keys is a list
+    if isinstance(groq_keys, str):
+        groq_keys = [groq_keys]
+    
+    if not groq_keys:
+        raise ValueError("groq_keys list is empty")
 
     # Build LangChain VectorStore wrapper for Qdrant
     embedding = HuggingFaceEmbeddings(model_name="dangvantuan/sentence-camembert-base")
@@ -195,63 +204,100 @@ def Search(
         content_payload_key="chunk"
     )
 
-    llm = ChatGroq(
-        groq_api_key=groq_key,
-        model_name="openai/gpt-oss-20b",
-        temperature=0
-        )
+    # Try each API key until one works
+    last_error = None
+    for key_index, groq_key in enumerate(groq_keys):
+        try:
+            print(f"[INFO] Attempting retrieval with API key #{key_index + 1}/{len(groq_keys)}")
+            
+            llm = ChatGroq(
+                groq_api_key=groq_key,
+                model_name="openai/gpt-oss-20b",
+                temperature=0
+            )
 
-    # ------------------------------------------
-    # SELF-QUERY RETRIEVER (LLM filters metadata)
-    # ------------------------------------------
-    if mode == "self":
-        metadata_fields = [
-            AttributeInfo(name="name", description="Document name", type="string"),
-            AttributeInfo(name="categorie", description="Document category", type="string"),
-            AttributeInfo(name="source", description="Original file path", type="string"),
-            AttributeInfo(name="part", description="Chunk part number", type="integer"),
-            ]
-    
-        self_retriever = SelfQueryRetriever.from_llm(
-            llm=llm,
-            vectorstore=vectorstore,
-            document_contents="ENSA documents",
-            metadata_field_info=metadata_fields,
-            verbose=True
-        )
+            # ------------------------------------------
+            # SELF-QUERY RETRIEVER (LLM filters metadata)
+            # ------------------------------------------
+            if mode == "self":
+                metadata_fields = [
+                    AttributeInfo(name="name", description="Document name", type="string"),
+                    AttributeInfo(name="categorie", description="Document category", type="string"),
+                    AttributeInfo(name="source", description="Original file path", type="string"),
+                    AttributeInfo(name="part", description="Chunk part number", type="integer"),
+                ]
+            
+                self_retriever = SelfQueryRetriever.from_llm(
+                    llm=llm,
+                    vectorstore=vectorstore,
+                    document_contents="ENSA documents",
+                    metadata_field_info=metadata_fields,
+                    verbose=True
+                )
 
-        docs = self_retriever.invoke(query)
+                docs = self_retriever.invoke(query)
 
+                chunks = [d.page_content for d in docs] 
+                sources = [d.metadata.get("source") for d in docs if d.metadata.get("source")]
+                context = "\n---\n".join(chunks)
 
-        chunks = [d.page_content for d in docs]
-        sources = [d.metadata.get("source") for d in docs if d.metadata.get("source")]
+                print(f"[SUCCESS] Retrieved with API key #{key_index + 1}")
+                return context, sources
+        
 
-        context = "\n---\n".join(chunks)
-        return context, sources
-
-    # ------------------------------------------
-    # MULTI-QUERY RETRIEVER (LLM expands queries)
-    # ------------------------------------------
-    if mode == "multi":
-        base_ret = vectorstore.as_retriever(search_kwargs={"k": top_k})
-
-        multi = MultiQueryRetriever.from_llm(
-            retriever=base_ret,
-            llm=llm,
-            include_original=True
-        )
+            # ------------------------------------------
+            # MULTI-QUERY RETRIEVER (LLM generates multiple queries)
+            # ------------------------------------------
+            elif mode == "multi":
+                from langchain.retrievers.multi_query import MultiQueryRetriever
                 
-        docs = multi.invoke(query)
+                multi_retriever = MultiQueryRetriever.from_llm(
+                    retriever=vectorstore.as_retriever(),
+                    llm=llm
+                )
 
-        chunks = [d.page_content for d in docs]
-        sources = [d.metadata.get("source") for d in docs if d.metadata.get("source")]
+                docs = multi_retriever.invoke(query)
 
-        context = "\n---\n".join(chunks)
-        print(f"----------------------- Multi-Query retrieved {context}")
-        return context, sources
 
-    raise ValueError("mode must be 'default', 'self', or 'multi'")
+                chunks = [d.page_content for d in docs] 
+                sources = [d.metadata.get("source") for d in docs if d.metadata.get("source")]
+                context = "\n---\n".join(chunks)
 
+                print(f"[SUCCESS] Retrieved with API key #{key_index + 1}")
+                return context, sources
+
+        except RateLimitError as e:
+            last_error = e
+            print(f"[WARNING] Rate limit hit on API key #{key_index + 1}")
+            
+            if key_index < len(groq_keys) - 1:
+                print(f"[INFO] Switching to next API key...")
+                continue
+            else:
+                raise Exception(f"All API keys exhausted. Rate limit error: {str(e)}")
+
+        except APIError as e:
+            last_error = e
+            print(f"[ERROR] API error on key #{key_index + 1}: {str(e)}")
+            
+            if key_index < len(groq_keys) - 1:
+                print(f"[INFO] Switching to next API key...")
+                continue
+            else:
+                raise Exception(f"All API keys failed. Last error: {str(e)}")
+
+        except Exception as e:
+            last_error = e
+            print(f"[ERROR] Error on key #{key_index + 1}: {str(e)}")
+            
+            if key_index < len(groq_keys) - 1:
+                print(f"[INFO] Switching to next API key...")
+                continue
+            else:
+                raise Exception(f"All API keys failed. Last error: {str(e)}")
+
+    # Fallback
+    raise Exception(f"Could not retrieve results with any API key. Last error: {str(last_error)}")
 
 def GenerationGroq(query, search_results, groq_key, temperature=0.6, max_tokens=2000):
     """Generate response using Groq API"""
@@ -360,11 +406,21 @@ def chunk_Embedd(client: QdrantClient, collection_name: str, embedding_model: Se
 
         for j, emb in enumerate(embs):
             idx = i + j
+            meta = metadata[idx]
+            doc_name = os.path.splitext(meta.get('name', 'Unknown'))[0]  # Remove extension
+            chunk_with_meta = f"Cela concerne: {doc_name}\n\n{chunks[idx]}"
+            
             points.append(
                 PointStruct(
                     id=str(uuid.uuid4()),
                     vector={"default": emb.tolist()},
-                    payload={"chunk": chunks[idx], **metadata[idx]}
+                    payload={
+                        "chunk": chunk_with_meta,
+                        "name": meta.get('name'),
+                        "source": meta.get('source'),
+                        "categorie": meta.get('categorie'),
+                        "part": meta.get('part')
+                    }
                 )
             )
 

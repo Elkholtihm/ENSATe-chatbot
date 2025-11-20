@@ -115,7 +115,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom settings for the chatbot
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
-GROQ_API_KEY = os.getenv("groq_api")
+GROQ_API_KEY = [os.getenv("groq_api1"), os.getenv("groq_api_2"), os.getenv("groq_api_3"), os.getenv("groq_api_4"), 
+                os.getenv("groq_api_5"), os.getenv("groq_api_6"), os.getenv("groq_api_7"), os.getenv("groq_api_8")]
+
 QDRANT_HOST = os.getenv("QDRANT_HOST", "localhost")
 QDRANT_PORT = int(os.getenv("QDRANT_PORT", 6333))
 COLLECTION_NAME = "ENSA_chatbot"

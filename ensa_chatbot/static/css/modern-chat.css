@@ -664,7 +664,7 @@ body {
 }
 
 .typing-message {
-    font-size: 14px;
+    font-size: 20px;
     color: var(--text-secondary);
     font-style: italic;
     animation: fadeInOut 2s ease-in-out infinite;
