@@ -14,6 +14,9 @@ class ChatHistory(models.Model):
     query = models.TextField(verbose_name="Question")
     response = models.TextField(verbose_name="Réponse")
     sources = models.TextField(blank=True, null=True, verbose_name="Sources")
+    # ADD THIS LINE:
+    sources_json = models.JSONField(default=list, blank=True, verbose_name="Sources JSON")
+    
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date")
     
     class Meta:

@@ -35,7 +35,7 @@ urlpatterns = [
     # ========================================================================
     # API Endpoints (Optional - for AJAX)
     # ========================================================================
-    path('api/history/', views.get_chat_history_json, name='get_history_json'),
+    path('api/history/', views.get_chat_history_json, name='get_history'),
 
     
     path('query/', views.handle_query, name='handle_query'), 

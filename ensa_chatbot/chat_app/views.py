@@ -420,22 +420,28 @@ def generate_stream(user, query, results, valid_sources, groq_api_keys):
             
             # Save to database
             try:
-                from django.apps import apps
-                ChatHistory = apps.get_model('yourapp', 'ChatHistory')
+                print(f"[INFO] Saving chat to database...")
                 
                 ChatHistory.objects.create(
                     user=user,
                     query=query,
                     response=full_response,
-                    sources=', '.join(valid_sources)
+                    sources=', '.join(valid_sources),
+                    sources_json=formatted_sources
                 )
+                
+                print(f"[SUCCESS] Chat saved!")
+                
                 profile = user.profile
                 profile.total_queries = user.chat_history.count()
                 profile.save()
-                print(f"[{user.username}] Streamed chat saved (API key #{key_index + 1})")
+                
+                print(f"[SUCCESS] Profile updated. Total: {profile.total_queries}")
             except Exception as e:
                 print(f"[ERROR] Failed to save: {e}")
-            
+                import traceback
+                traceback.print_exc()
+                        
             # Success - exit the retry loop
             return
         
