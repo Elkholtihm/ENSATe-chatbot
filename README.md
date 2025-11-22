@@ -150,6 +150,15 @@ DJANGO_SECRET_KEY=your-secret-key
 DEBUG=True
 HUGGINGFACE_TOKEN=your_huggingface_token
 groq_api=your_groq_api_key
+
+# Qdrant Configuration
+QDRANT_USE_CLOUD=True # True to store in cloud
+
+# Qdrant Cloud (when USE_CLOUD=True)
+QDRANT_URL=your_qdrant_cloud_url:6333
+QDRANT_API_KEY=youre_qdrant_cloud_api
+
+# Local Qdrant (when USE_CLOUD=False)
 QDRANT_HOST=localhost
 QDRANT_PORT=6333
 ```
@@ -157,6 +166,7 @@ QDRANT_PORT=6333
 ### Start Qdrant
 
 ```bash
+# to run local qdrant on local within Docker
 docker run -d -p 6333:6333 -p 6334:6334 --name qdrant qdrant/qdrant
 ```
 
