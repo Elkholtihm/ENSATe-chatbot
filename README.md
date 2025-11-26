@@ -204,8 +204,10 @@ The next planned development phase includes:
 * Integrating the fine-tuned model into the chatbot pipeline
 * Improving context retention and reasoning capabilities
 * Expanding the dataset with multilingual content (Arabic, French, English)
-
   
+## Demonstration
+[![Watch the video](https://img.youtube.com/vi/9IU4lGGpRJg/maxresdefault.jpg)](https://www.youtube.com/watch?v=9IU4lGGpRJg)
+
 ## License
 This project is licensed under the **MIT License (Attribution Required)**, see the [LICENSE](./LICENSE) file for details.
 If you use this project (in whole or in part), please include the following credit:
