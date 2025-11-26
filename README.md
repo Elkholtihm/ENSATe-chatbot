@@ -206,7 +206,9 @@ The next planned development phase includes:
 * Expanding the dataset with multilingual content (Arabic, French, English)
   
 ## Demonstration
-[![Watch the video](https://img.youtube.com/vi/9IU4lGGpRJg/maxresdefault.jpg)](https://www.youtube.com/watch?v=9IU4lGGpRJg)
+Check out the full demo video below:
+[![Demo Video](https://img.youtube.com/vi/9IU4lGGpRJg/maxresdefault.jpg)](https://www.youtube.com/watch?v=9IU4lGGpRJg)
+*Click the image above to watch the 3-minute demo on YouTube*
 
 ## License
 This project is licensed under the **MIT License (Attribution Required)**, see the [LICENSE](./LICENSE) file for details.
